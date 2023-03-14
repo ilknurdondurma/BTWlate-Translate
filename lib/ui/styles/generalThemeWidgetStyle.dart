@@ -14,13 +14,12 @@ class generalThemeWidgetStyle extends StatefulWidget {
   State<generalThemeWidgetStyle> createState() => _generalThemeWidgetStyleState();
 }
 class _generalThemeWidgetStyleState extends State<generalThemeWidgetStyle> {
-  late Widget child; // child değişkeni burada tanımlandı
+
 
   @override
   void initState() {
     setState(() {
       super.initState();
-      child = widget.child;
     }); // child değişkeni, widget.child ile eşleştirildi
   }
   @override
@@ -43,7 +42,7 @@ class _generalThemeWidgetStyleState extends State<generalThemeWidgetStyle> {
               width: UISpaceHelper.dynamicWidth(context, UISizeHelper.smallHeaderWidth),
               height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
               decoration: UIDecorationStyles.smallHeaderContainerStyle,
-              child: child,
+              child: widget.child,
             ),
         ),
       ],

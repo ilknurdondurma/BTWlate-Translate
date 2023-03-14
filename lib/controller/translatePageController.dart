@@ -1,11 +1,13 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class InputLangController extends StatefulWidget {
-  final Function(String) onSelected1;
+  final Function(String) onSelected;
 
   const InputLangController({
     super.key,
-    required this.onSelected1
+    required this.onSelected
 });
   static List<PopupMenuEntry<String>> menuEntriesInput = [
     PopupMenuItem<String>(
@@ -50,8 +52,6 @@ class InputLangController extends StatefulWidget {
 }
 
 class _InputLangControllerState extends State<InputLangController> {
-
-  late Function onSelected1;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
@@ -59,7 +59,7 @@ class _InputLangControllerState extends State<InputLangController> {
       itemBuilder: (BuildContext context) {
         return InputLangController.menuEntriesInput;
       },
-      onSelected: (selectedValue) => widget.onSelected1(selectedValue),
+      onSelected: (selectedValue) => widget.onSelected(selectedValue),
     );
   }
 }

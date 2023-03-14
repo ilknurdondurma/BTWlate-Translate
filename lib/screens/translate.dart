@@ -10,14 +10,19 @@ import '../ui/helper/uiColorsHelper.dart';
 import '../ui/styles/generalThemeWidgetStyle.dart';
 
 class translatePage extends StatefulWidget {
-  const translatePage({Key? key}) : super(key: key);
+  translatePage({Key? key}) : super(key: key);
+  String initialLang="tr";
 
   @override
   State<translatePage> createState() => _translatePageState();
 }
 
 class _translatePageState extends State<translatePage> {
-  String _lang1="tr";
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +35,13 @@ class _translatePageState extends State<translatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(_lang1, style: UITextStyles.translateStyle,
+                Text(widget.initialLang, style: UITextStyles.translateStyle,
                 ),
                 InputLangController(
-                  onSelected1: (selectedValue){
+                  onSelected: (selectedValue){
                     setState(() {
-                      _lang1=selectedValue;
-                      print(_lang1);
+                      widget.initialLang = selectedValue;
+                      print(widget.initialLang);
                     });
                   },
                 ),
@@ -55,7 +60,7 @@ class _translatePageState extends State<translatePage> {
             height: UISpaceHelper.dynamicHeight(context, UISizeHelper.translateBox1Height),
             decoration: UIDecorationStyles.translateBoxContainerStyle,
             child: Text(
-              _lang1,
+              widget.initialLang,
               style: UITextStyles.translateStyle,
             ),
           ),

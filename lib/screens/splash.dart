@@ -6,20 +6,20 @@ import 'package:flutter/material.dart';
 
 
 
-class splashPage extends StatefulWidget {
-  const splashPage({Key? key}) : super(key: key);
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
-  State<splashPage> createState() => _splashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _splashPageState extends State<splashPage> with SingleTickerProviderStateMixin{
+class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin{
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
   @override
   void initState() {
     super.initState();
-    new Future.delayed(
+    Future.delayed(
         const Duration(seconds: 3),
             () => Navigator.pushReplacement(
           context,
@@ -43,7 +43,7 @@ class _splashPageState extends State<splashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         backgroundColor: UIColorsHelper.light_Header_Background,
         body: Center(
             child:SlideTransition(
@@ -54,7 +54,6 @@ class _splashPageState extends State<splashPage> with SingleTickerProviderStateM
                   Icon(Icons.translate,size: 50,),
                   Text(UITextHelper.btwlate,style: UITextStyles.splashStyle,),
                   Text(UITextHelper.thereDot,style: UITextStyles.splashStyle),
-
                 ],
               )
             )

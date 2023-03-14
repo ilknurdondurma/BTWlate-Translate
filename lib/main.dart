@@ -3,13 +3,17 @@ import 'package:get/get.dart';
 import 'screens/splash.dart';
 
 void main() {
-  runApp(const GetMaterialApp(home: translate()));
+  runApp(const GetMaterialApp(
+    home: Translate(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
-class translate extends StatelessWidget {
-  const translate({Key? key}) : super(key: key);
+
+class Translate extends StatelessWidget {
+  const Translate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return splashPage();
+    return const SplashPage();
   }
 }
