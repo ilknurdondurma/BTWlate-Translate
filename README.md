@@ -1,6 +1,7 @@
 # btwlate
 
 A new Flutter project.
+Translator App
 
 ## Getting Started
 
