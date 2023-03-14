@@ -1,12 +1,20 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:btwlate/ui/helper/uiColorsHelper.dart';
+import 'package:btwlate/ui/helper/uiSizeHelper.dart';
 import 'package:flutter/material.dart';
 
+
+//**************** INPUT LANG POPUP ***************************************************
+
 class InputLangController extends StatefulWidget {
-  final Function(String) onSelected1;
+  final Function(String) onSelected;
 
   const InputLangController({
     super.key,
-    required this.onSelected1
-});
+    required this.onSelected
+  });
+
   static List<PopupMenuEntry<String>> menuEntriesInput = [
     PopupMenuItem<String>(
       value: 'tr',
@@ -45,25 +53,33 @@ class InputLangController extends StatefulWidget {
       child: Text('ÇİNCE'),
     )
   ];
+
   @override
   State<InputLangController> createState() => _InputLangControllerState();
 }
-
 class _InputLangControllerState extends State<InputLangController> {
-
-  late Function onSelected1;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      icon: Icon(Icons.keyboard_arrow_down_outlined),
+      icon: Icon(Icons.keyboard_arrow_down_outlined,color: UIColorsHelper.light_body_IconColor,size: UISizeHelper.iconSelectLang1Size,),
       itemBuilder: (BuildContext context) {
         return InputLangController.menuEntriesInput;
       },
-      onSelected: (selectedValue) => widget.onSelected1(selectedValue),
+      onSelected: (selectedValue) => widget.onSelected(selectedValue),
     );
   }
 }
-abstract class OutputLangController extends StatelessWidget {
+
+
+//**************** OUTPUT LANG POPUP ***************************************************
+
+class OutputLangController extends StatefulWidget {
+   final Function(String) onSelected;
+
+   const OutputLangController({
+     super.key,
+     required this.onSelected
+   });
   static List<PopupMenuEntry<String>> menuEntriesOutput = [
     PopupMenuItem<String>(
       value: 'tr',
@@ -101,16 +117,35 @@ abstract class OutputLangController extends StatelessWidget {
       value: 'zc',
       child: Text('ÇİNCE'),
     )
-  ];// menu içerik listesi
-
+  ];
+  @override
+  State<OutputLangController> createState() => _OutputLangControllerState();
+}
+class _OutputLangControllerState extends State<OutputLangController> {
+// menu içerik listesi
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      icon: Icon(Icons.keyboard_arrow_down_outlined),
+      icon: Icon(Icons.keyboard_arrow_down_outlined,color: UIColorsHelper.light_body_IconColor,size: UISizeHelper.iconSelectLang2Size,),
       itemBuilder: (BuildContext context) {
-        return menuEntriesOutput;
+        return OutputLangController.menuEntriesOutput;
       },
-      onSelected: (String selectedValue) => null,
+      onSelected: (selectedValue) => widget.onSelected(selectedValue),
     );
+  }
+}
+
+//*************** MENU ICON ************************************************************
+
+class MenuIconController{
+  static void menuIconController(){
+    print("menuIconController cagrıldı");
+  }
+}
+//****************** GREY CHANGE LANG ICON ******************************************************
+
+class ChangeLangIconController{
+  static void changeLangIconController(){
+    print("changeLangIconControlle cagrıldı");
   }
 }

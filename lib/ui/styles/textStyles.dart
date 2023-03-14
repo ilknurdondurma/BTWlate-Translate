@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class UITextStyles {
   static TextStyle splashStyle = TextStyle(
       fontFamily: "DancingScript",
-      color: UIColorsHelper.light_TextFont_Color,
+      color: UIColorsHelper.splashItemColor,
       fontSize: 45,
       fontWeight: FontWeight.w500);
 
@@ -16,6 +16,8 @@ class UITextStyles {
       fontWeight: FontWeight.w500);
 
   static TextStyle translateStyle = TextStyle(
+    fontFamily: "PermanentMarker",
+      fontWeight: FontWeight.normal,
       color: UIColorsHelper.light_TextFont_Color,
       fontSize: 30,
       );

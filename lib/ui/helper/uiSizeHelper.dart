@@ -3,7 +3,7 @@ class UISizeHelper{
   // header sizes
   static const double HeaderBottomLeftCircular = 100;
   static const double HeaderBottomRightCircular = 100;
-  static const double headerVisibleHeight = 0.30;
+  static const double headerVisibleHeight = 0.30;//0.30
 
 
   // small headers sizes (ustteki gri olan yer)
@@ -20,7 +20,10 @@ class UISizeHelper{
   static const double translateBox1Height = 0.25;
   static const double translateBox1Width = 0.90;
 
-
+  // icons sizes
+  static const double iconChangeLangSize=40;
+  static const double iconSelectLang1Size=30;
+  static const double iconSelectLang2Size=30;
 
 
   //separators

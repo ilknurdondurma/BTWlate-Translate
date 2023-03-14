@@ -3,28 +3,28 @@ import 'package:btwlate/ui/helper/uiColorsHelper.dart';
 import 'package:btwlate/ui/helper/uiTextHelper.dart';
 import 'package:btwlate/ui/styles/textStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 
-class splashPage extends StatefulWidget {
-  const splashPage({Key? key}) : super(key: key);
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
-  State<splashPage> createState() => _splashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _splashPageState extends State<splashPage> with SingleTickerProviderStateMixin{
+class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin{
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
   @override
   void initState() {
     super.initState();
-    new Future.delayed(
-        const Duration(seconds: 3),
+    Future.delayed(
+        const Duration(seconds: 2),
             () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => translatePage()),
-        ));
+              context,
+              MaterialPageRoute(builder: (context) => translatePage()),));
 
     _controller = AnimationController(
       duration: Duration(seconds: 1),
@@ -43,7 +43,7 @@ class _splashPageState extends State<splashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         backgroundColor: UIColorsHelper.light_Header_Background,
         body: Center(
             child:SlideTransition(
@@ -51,10 +51,9 @@ class _splashPageState extends State<splashPage> with SingleTickerProviderStateM
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.translate,size: 50,),
+                  Icon(Icons.translate,size: 50,color: UIColorsHelper.splashIconColor,),
                   Text(UITextHelper.btwlate,style: UITextStyles.splashStyle,),
                   Text(UITextHelper.thereDot,style: UITextStyles.splashStyle),
-
                 ],
               )
             )

@@ -27,13 +27,19 @@ class UIColorsHelper{
   static const Color light_TranslateButton=Color(0xff528df9);
 
   //  text fonst colors
-  static const Color light_TextFont_Color = Color(0xFF000000);
-  static const Color dark_TextFont_Color = Color(0xFFFFFFFF);
+  static const Color light_TextFont_Color = Color(0xff8d8d8d);
+  static const Color dark_TextFont_Color = Color(0xff8d8d8d);
 
 
   // Icons colors
-  static const Color dark_IconColor = Color(0xFFFFFFFF);
-  static const Color light_IconColor = Color(0xff8d8d8d);
+  static const Color light_heaader_IconColor = Color(0xFFFFFFFF);
+  static const Color dark_body_IconColor = Color(0xFFFFFFFF);
+  static const Color light_body_IconColor = Color(0xff8d8d8d);
+
+  //splash colors
+  static const Color splashIconColor=Color(0xFF000000);
+  static const Color splashItemColor=Color(0xFF000000);
+
 
   // Drawer colors
   static const Color light_Drawer_header = Color(0xff528df9);
