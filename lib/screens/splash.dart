@@ -1,10 +1,9 @@
+import 'package:btwlate/screens/translate.dart';
 import 'package:btwlate/ui/helper/uiColorsHelper.dart';
 import 'package:btwlate/ui/helper/uiTextHelper.dart';
 import 'package:btwlate/ui/styles/textStyles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import 'login.dart';
 
 
 class splashPage extends StatefulWidget {
@@ -24,7 +23,7 @@ class _splashPageState extends State<splashPage> with SingleTickerProviderStateM
         const Duration(seconds: 3),
             () => Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => loginPage()),
+          MaterialPageRoute(builder: (context) => translatePage()),
         ));
 
     _controller = AnimationController(

@@ -11,7 +11,7 @@ class UIDecorationStyles {
       ));
 
   
-  static BoxDecoration headerSmallContainerStyle = BoxDecoration(
+  static BoxDecoration smallHeaderContainerStyle = BoxDecoration(
       color: UIColorsHelper.light_companenet_color,
       borderRadius: BorderRadius.circular(UISizeHelper.smallHeaderContainerCircular));
 

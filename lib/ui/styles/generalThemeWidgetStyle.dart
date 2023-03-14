@@ -4,15 +4,25 @@ import '../helper/uiSpaceHelper.dart';
 import 'decorationStyles.dart';
 
 class generalThemeWidgetStyle extends StatefulWidget {
+  final Widget child; // child parametresi burada tanımlanır
   const generalThemeWidgetStyle({
     super.key,
+    required this.child
   });
 
   @override
   State<generalThemeWidgetStyle> createState() => _generalThemeWidgetStyleState();
 }
-
 class _generalThemeWidgetStyleState extends State<generalThemeWidgetStyle> {
+  late Widget child; // child değişkeni burada tanımlandı
+
+  @override
+  void initState() {
+    setState(() {
+      super.initState();
+      child = widget.child;
+    }); // child değişkeni, widget.child ile eşleştirildi
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -32,9 +42,10 @@ class _generalThemeWidgetStyleState extends State<generalThemeWidgetStyle> {
               //grinin genişlik ve yukseklik oranları
               width: UISpaceHelper.dynamicWidth(context, UISizeHelper.smallHeaderWidth),
               height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
-              decoration: UIDecorationStyles.headerSmallContainerStyle,
+              decoration: UIDecorationStyles.smallHeaderContainerStyle,
+              child: child,
             ),
-        )
+        ),
       ],
     );
   }

@@ -15,5 +15,11 @@ class UITextStyles {
       fontSize: 20,
       fontWeight: FontWeight.w500);
 
+  static TextStyle translateStyle = TextStyle(
+      color: UIColorsHelper.light_TextFont_Color,
+      fontSize: 30,
+      );
+
+
 
 }
