@@ -9,9 +9,8 @@ class UITextHelper {
   static final String privacyPolicy ="By proceeding you also agree to the Terms of Service and Privacy Policy";
 
   // translate Page
-  static final String defaultLanguage1 = "English";
-  static final String defaultLanguage2 = "Turkish";
   static final String translateButton = "Translate";
+  static final String hintText=" | ";
 
   // drawer Items
   static final String favorites = "Favorites";

@@ -23,8 +23,10 @@ class UIColorsHelper{
 
 
   // button color
-  static const Color dark_TranslateButton = Color(0xFF000000);
-  static const Color light_TranslateButton=Color(0xff528df9);
+  static const Color dark_TranslateButtonBackground = Color(0xFF000000);
+  static const Color light_TranslateButtonBackground=Color(0xff528df9);
+  static const Color translateButtonItemColor=Color(0xFFFFFFFF);
+
 
   //  text fonst colors
   static const Color light_TextFont_Color = Color(0xff8d8d8d);
@@ -46,6 +48,11 @@ class UIColorsHelper{
   static const Color dark_Drawer_header = Color(0xFF000000);
   static const Color dark_DrawerItemColor = Color(0xFFFFFFFF);
   static const Color light_DrawerItemColor = Color(0xFF000000);
+
+  //popup menu color
+  static const Color light_popupBackgorundColor=Color(0xffc8d8f6);
+  static const Color dark_popupBackgorundColor=Color(0xffc8d8f6);
+
 
 
 }

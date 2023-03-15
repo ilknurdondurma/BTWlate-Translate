@@ -61,6 +61,7 @@ class _InputLangControllerState extends State<InputLangController> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
+      color: UIColorsHelper.light_popupBackgorundColor,
       icon: Icon(Icons.keyboard_arrow_down_outlined,color: UIColorsHelper.light_body_IconColor,size: UISizeHelper.iconSelectLang1Size,),
       itemBuilder: (BuildContext context) {
         return InputLangController.menuEntriesInput;
@@ -126,6 +127,7 @@ class _OutputLangControllerState extends State<OutputLangController> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
+      color: UIColorsHelper.light_popupBackgorundColor,
       icon: Icon(Icons.keyboard_arrow_down_outlined,color: UIColorsHelper.light_body_IconColor,size: UISizeHelper.iconSelectLang2Size,),
       itemBuilder: (BuildContext context) {
         return OutputLangController.menuEntriesOutput;
@@ -147,5 +149,38 @@ class MenuIconController{
 class ChangeLangIconController{
   static void changeLangIconController(){
     print("changeLangIconControlle cagrıldı");
+  }
+}
+
+//****************** TRANSALTE BUTTON ******************************************************
+class TransalateButtonController{
+  static void translateButtonController(){
+    print("trasnlateButtonController cagrıldı");
+  }
+}
+
+//****************** İN BOX ICONS ******************************************************
+class InBoxIconsController{
+
+  static void copyControllerInput(){
+    print("copyControllerInput cagrıldı");
+  }
+  static void copyControllerOutput(){
+    print("copyControllerOutput cagrıldı");
+  }
+
+  static void closeController(){
+    print("closeController cagrıldı");
+  }
+
+  static void favriteController(){
+    print("favoriteController cagrıldı");
+  }
+
+  static void voiceControllerInput(){
+    print("voiceControllerInput cagrıldı");
+  }
+  static void voiceControllerOutput(){
+    print("voiceControllerOutput cagrıldı");
   }
 }

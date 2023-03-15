@@ -1,9 +1,8 @@
 import 'package:btwlate/screens/translate.dart';
 import 'package:btwlate/ui/helper/uiColorsHelper.dart';
 import 'package:btwlate/ui/helper/uiTextHelper.dart';
-import 'package:btwlate/ui/styles/textStyles.dart';
+import 'package:btwlate/ui/styles/styles/textStyles.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 
 
@@ -24,18 +23,19 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
         const Duration(seconds: 2),
             () => Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => translatePage()),));
+              MaterialPageRoute(builder: (context) => TranslatePage()),));
 
     _controller = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       vsync: this,
     )..repeat(reverse: true);
-    _offsetAnimation = Tween<Offset>(begin: Offset(0, 0.0), end: Offset(0, -2))
+    _offsetAnimation = Tween<Offset>(begin: const Offset(0, 0.0), end: const Offset(0, -2))
         .animate(CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOutBack,
         reverseCurve: Curves.easeInOutBack));
   }
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -51,7 +51,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.translate,size: 50,color: UIColorsHelper.splashIconColor,),
+                  const Icon(Icons.translate,size: 50,color: UIColorsHelper.splashIconColor,),
                   Text(UITextHelper.btwlate,style: UITextStyles.splashStyle,),
                   Text(UITextHelper.thereDot,style: UITextStyles.splashStyle),
                 ],
