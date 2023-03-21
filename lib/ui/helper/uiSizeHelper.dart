@@ -8,8 +8,8 @@ class UISizeHelper{
 
   // small headers sizes (ustteki gri olan yer)
   static const double smallHeaderContainerCircular = 25;
-  static const double smallHeaderLeftSpace = 0.025;
-  static const double smallHeaderRightSpace = 0.025;
+  static const double smallHeaderLeftSpace = 0.035;
+  static const double smallHeaderRightSpace = 0.035;
   static const double smallHeaderTopSpace = 0.18;
   static const double smallHeaderHeight = 0.12;//0.13
   static const double smallHeaderWidth = 0.90;

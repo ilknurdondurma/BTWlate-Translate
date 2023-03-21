@@ -10,7 +10,9 @@ class UITextHelper {
 
   // translate Page
   static final String translateButton = "Translate";
-  static final String hintText=" | ";
+  static final String hintText="Enter Someting";
+  static final String copyText="copy success";
+
 
   // drawer Items
   static final String favorites = "Favorites";

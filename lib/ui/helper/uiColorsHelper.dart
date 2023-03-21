@@ -53,6 +53,11 @@ class UIColorsHelper{
   static const Color light_popupBackgorundColor=Color(0xffc8d8f6);
   static const Color dark_popupBackgorundColor=Color(0xffc8d8f6);
 
+  //notification Color
+  static const Color light_notificationColor = Color(0xFFC8D8F6);
+  static const Color light_notificationTextColor = Color(0xff8d8d8d);
+
+
 
 
 }

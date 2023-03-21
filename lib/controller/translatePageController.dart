@@ -2,7 +2,10 @@
 
 import 'package:btwlate/ui/helper/uiColorsHelper.dart';
 import 'package:btwlate/ui/helper/uiSizeHelper.dart';
+import 'package:btwlate/ui/helper/uiTextHelper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 
 //**************** INPUT LANG POPUP ***************************************************
@@ -160,17 +163,28 @@ class TransalateButtonController{
 }
 
 //****************** İN BOX ICONS ******************************************************
-class InBoxIconsController{
-
-  static void copyControllerInput(){
+abstract class InBoxIconsController extends StatefulWidget{
+  @override
+  static copyController(String text,context){
     print("copyControllerInput cagrıldı");
-  }
-  static void copyControllerOutput(){
-    print("copyControllerOutput cagrıldı");
-  }
+    if (text.isEmpty){
+      print("bos");
+    }
+    else {
+      Clipboard.setData(ClipboardData(text: text)).then((value) => {
 
-  static void closeController(){
-    print("closeController cagrıldı");
+      Fluttertoast.showToast(
+
+      msg: UITextHelper.copyText,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 16.0
+      )
+
+      });
+    }
   }
 
   static void favriteController(){
@@ -182,5 +196,66 @@ class InBoxIconsController{
   }
   static void voiceControllerOutput(){
     print("voiceControllerOutput cagrıldı");
+  }
+}
+//****************************** BİLDİRİM ********************************************************
+
+class FunkyNotification extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => FunkyNotificationState();
+}
+
+class FunkyNotificationState extends State<FunkyNotification> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> position;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: 1));
+    position = Tween<Offset>(begin: Offset(0.0, -4.0), end: Offset.zero)
+        .animate(
+        CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
+    Future.delayed(Duration(seconds: 1), () {
+      _controller.forward();
+    });
+  }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Material(
+        color: Colors.transparent,
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: SlideTransition(
+              position: position,
+              child: Container(
+                decoration: ShapeDecoration(
+                    color: UIColorsHelper.light_notificationColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0))),
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    UITextHelper.copyText,
+                    style: TextStyle(
+                        color: UIColorsHelper.light_notificationTextColor, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
