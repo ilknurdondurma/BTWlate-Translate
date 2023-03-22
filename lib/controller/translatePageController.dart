@@ -8,10 +8,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 
 
-//**************** INPUT LANG POPUP *********************************************
+//**************** INPUT LANG POPUP ********************************************
 class InputLangController extends StatefulWidget {
   final Function(String) onSelected;
 
@@ -162,9 +163,10 @@ class TransalateButtonController extends GetxController {
     return translatedText;
   }
 }
-//****************** İN BOX ICONS ***********************************************
+//****************** İN BOX ICONS **********************************************
 abstract class InBoxIconsController extends StatefulWidget{
   @override
+
   static copyController(String text,context){
     print("copyControllerInput cagrıldı");
     if (text.isEmpty){
@@ -187,7 +189,7 @@ abstract class InBoxIconsController extends StatefulWidget{
     }
   }
 
-  static void favriteController(){
+  static void favoriteController(String textKey,String textValue){
     print("favoriteController cagrıldı");
   }
 
@@ -198,7 +200,7 @@ abstract class InBoxIconsController extends StatefulWidget{
     print("voiceControllerOutput cagrıldı");
   }
 }
-//****************************** TOAST BİLDİRİM **************************************
+//****************************** TOAST BİLDİRİM ********************************
 class FunkyNotification extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => FunkyNotificationState();
@@ -259,7 +261,8 @@ class FunkyNotificationState extends State<FunkyNotification> with SingleTickerP
 }
 //*************** MENU ICON ****************************************************
 class MenuIconController{
-  static void menuIconController(){
+  static void menuIconController(scaffoldkey){
     print("menuIconController cagrıldı");
+    scaffoldkey.currentState.openDrawer();
   }
 }

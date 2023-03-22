@@ -7,10 +7,9 @@ import 'package:btwlate/ui/helper/uiSpaceHelper.dart';
 import 'package:btwlate/ui/styles/styles/decorationStyles.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
-
 import '../controller/translatePageController.dart';
 import '../ui/helper/uiColorsHelper.dart';
+import '../ui/styles/myWidgets/myDrawerWidget.dart';
 import '../ui/styles/myWidgets/myGeneralWidget.dart';
 
 // ignore: must_be_immutable
@@ -28,14 +27,17 @@ class _TranslatePageState extends State<TranslatePage> {
   void initState() {
     super.initState();
   }
+
   TextEditingController _textEditingController=TextEditingController();
-  TextEditingController _textEditingController2=TextEditingController();
   final responseTranslateController=Get.put(TransalateButtonController());
+  final scaffoldkey = GlobalKey<ScaffoldState>();
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        key: scaffoldkey,
         backgroundColor: UIColorsHelper.light_Background,
         body: ScaffoldMessenger(
           child: SingleChildScrollView(
@@ -44,7 +46,7 @@ class _TranslatePageState extends State<TranslatePage> {
                 //generalHeader
                 GeneralThemeWidgetStyle(
                   iconChild: const Icon(Icons.menu),
-                  headerIconFunc: MenuIconController.menuIconController,
+                  headerIconFunc: ()=>MenuIconController.menuIconController(scaffoldkey),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -136,7 +138,7 @@ class _TranslatePageState extends State<TranslatePage> {
                                 icon: Icons.favorite_border,
                                 color: UIColorsHelper.light_body_IconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: InBoxIconsController.favriteController),
+                                onPressed: ()=>InBoxIconsController.favoriteController(_textEditingController.text,"${TransalateButtonController.responseTranslate.value}"??"")),
                             MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
                                 color: UIColorsHelper.light_body_IconColor,
@@ -182,7 +184,6 @@ class _TranslatePageState extends State<TranslatePage> {
                 ),
                 //trasnslate box 2
                 Container(
-                  alignment: Alignment.center,
                   //translate Box un genişlik ve yukseklik oranları
                   width: UISpaceHelper.dynamicWidth(
                       context, UISizeHelper.translateBox1Width),
@@ -191,8 +192,8 @@ class _TranslatePageState extends State<TranslatePage> {
                   decoration: UIDecorationStyles.translateBoxContainerStyle,
                   child: SingleChildScrollView(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -201,26 +202,19 @@ class _TranslatePageState extends State<TranslatePage> {
                               icon: Icons.copy,
                               color: UIColorsHelper.light_body_IconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: ()=>InBoxIconsController.copyController(_textEditingController2.text,context)),
+                              onPressed: ()=>InBoxIconsController.copyController("${TransalateButtonController.responseTranslate.value}"??"",context)),
                           MyIconButtonWidget(
                               icon: Icons.volume_up_outlined,
                               color: UIColorsHelper.light_body_IconColor,
                               size: UISizeHelper.inBoxIconsSize,
                               onPressed: InBoxIconsController.voiceControllerOutput),
                         ],),
-                        Obx(()=>TextFormField(
-                          maxLength: 20,
-                          controller: _textEditingController2,
-                          decoration: InputDecoration(
-                            alignLabelWithHint: false,
-                            //hintText: "${TransalateButtonController.responseTranslate.value}",
-                            border: UnderlineInputBorder(borderSide: BorderSide.none),
-                          ),
-                          maxLines: 10,
-                          maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds
-
-                        ),),
-
+                        Obx(()=>SelectableText(
+                          maxLines: null,
+                          "${TransalateButtonController.responseTranslate.value}"??"",
+                          textAlign: TextAlign.start,
+                        ),
+                        ),
                       ],
                     ),
                   ),
@@ -229,7 +223,10 @@ class _TranslatePageState extends State<TranslatePage> {
             ),
           ),
         ),
+        drawer: drawerWidget(),
       ),
     );
   }
 }
+
+

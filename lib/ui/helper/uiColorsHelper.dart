@@ -15,6 +15,10 @@ class UIColorsHelper{
   static const Color dark_Header_Background = Color(0xFF000000);
   static const Color light_Header_Background = Color(0xff528df9);
 
+  // title text color
+  static const Color light_title_textColor = Color(0xFF000000);
+
+
   //likeButton color
   static const Color light_like_Color=Color(0xff528df9);
   static const Color dark_like_Color=Color(0xff528df9);
@@ -45,7 +49,10 @@ class UIColorsHelper{
 
   // Drawer colors
   static const Color light_Drawer_header = Color(0xff528df9);
+  static const Color light_Drawer_header_textColor = Color(0xFFFFFFFF);
+  static const Color light_Drawer_body_textColor = Color(0xff8d8d8d);
   static const Color dark_Drawer_header = Color(0xFF000000);
+
   static const Color dark_DrawerItemColor = Color(0xFFFFFFFF);
   static const Color light_DrawerItemColor = Color(0xFF000000);
 

@@ -24,10 +24,19 @@ class UITextStyles {
     color: UIColorsHelper.translateButtonItemColor,
     fontSize: 20,
   );
-  static TextStyle errorTextStyle = const TextStyle(
-    color: UIColorsHelper.errorColor,
-    fontSize: 20,
+  static TextStyle drawerHeaderTextStyle = const TextStyle(
+    color: UIColorsHelper.light_Drawer_header_textColor,
+    fontSize: 15,
   );
 
+  static TextStyle drawerBodyTextStyle = const TextStyle(
+    color: UIColorsHelper.light_Drawer_body_textColor,
+    fontSize: 15,
+  );
+
+  static TextStyle PagesHeaderStyle = const TextStyle(
+    color: UIColorsHelper.light_title_textColor,
+    fontSize: 25,
+  );
 
 }

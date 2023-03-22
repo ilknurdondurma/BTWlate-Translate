@@ -18,6 +18,8 @@ class UITextHelper {
 
   // favorites Page
   static const String favoritesHeader = "Favorites";
+  static const String settingsHeader = "Settings";
+
 
   //settingsPage
   static const String changeAccount = "Change Accounts";

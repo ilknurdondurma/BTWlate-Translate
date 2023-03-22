@@ -29,6 +29,10 @@ class UISizeHelper{
   // padding size
   static const double translateButtonPadding = 10;
 
+  // drawer sizes
+  static const double drawerAvatarRadius = 40;
+
+
 
   // icons sizes
   static const double iconChangeLangSize=40;
