@@ -22,7 +22,11 @@ class UITextStyles {
 
   static TextStyle translatePageButtonStyle = const TextStyle(
     color: UIColorsHelper.translateButtonItemColor,
-    fontSize: 16,
+    fontSize: 20,
+  );
+  static TextStyle errorTextStyle = const TextStyle(
+    color: UIColorsHelper.errorColor,
+    fontSize: 20,
   );
 
 

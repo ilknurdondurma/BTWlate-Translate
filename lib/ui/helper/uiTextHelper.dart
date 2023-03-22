@@ -1,33 +1,35 @@
-import 'package:flutter/material.dart';
-
 class UITextHelper {
   // login Page
-  static final String signIn = "SIGN IN";
-  static final String signUp = "SIGN UP";
-  static final String signInLower = "Sign in";
-  static final String signUpLower = "Sign up";
-  static final String privacyPolicy ="By proceeding you also agree to the Terms of Service and Privacy Policy";
+  static const String signIn = "SIGN IN";
+  static const String signUp = "SIGN UP";
+  static const String signInLower = "Sign in";
+  static const String signUpLower = "Sign up";
+  static const String privacyPolicy ="By proceeding you also agree to the Terms of Service and Privacy Policy";
 
   // translate Page
-  static final String translateButton = "Translate";
-  static final String hintText="Enter Someting";
-  static final String copyText="copy success";
+  static const String translateButton = "Translate";
+  static const String hintText="Enter Someting";
+  static const String copyText="copy success";
 
 
   // drawer Items
-  static final String favorites = "Favorites";
-  static final String settings = "Settings";
+  static const String favorites = "Favorites";
+  static const String settings = "Settings";
 
   // favorites Page
-  static final String favoritesHeader = "Favorites";
+  static const String favoritesHeader = "Favorites";
 
   //settingsPage
-  static final String changeAccount = "Change Accounts";
-  static final String theme = "Theme";
-  static final String logOut = "Log Out";
+  static const String changeAccount = "Change Accounts";
+  static const String theme = "Theme";
+  static const String logOut = "Log Out";
 
   //splash Page
-  static final String btwlate = "BtwLate";
-  static final String thereDot = "...";
+  static const String btwlate = "BtwLate";
+  static const String thereDot = "...";
+
+  // error messages
+  static const String errorEmpty = "Please Enter Someting or Try Again !!!!";
+
 }
 

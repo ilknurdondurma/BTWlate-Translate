@@ -5,11 +5,13 @@ import 'package:btwlate/ui/helper/uiSizeHelper.dart';
 import 'package:btwlate/ui/helper/uiTextHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:translator/translator.dart';
 
 
-//**************** INPUT LANG POPUP ***************************************************
-
+//**************** INPUT LANG POPUP *********************************************
 class InputLangController extends StatefulWidget {
   final Function(String) onSelected;
 
@@ -51,10 +53,6 @@ class InputLangController extends StatefulWidget {
       value: 'ar',
       child: Text('ARAPÇA'),
     ),
-    PopupMenuItem<String>(
-      value: 'zc',
-      child: Text('ÇİNCE'),
-    )
   ];
 
   @override
@@ -73,10 +71,7 @@ class _InputLangControllerState extends State<InputLangController> {
     );
   }
 }
-
-
-//**************** OUTPUT LANG POPUP ***************************************************
-
+//**************** OUTPUT LANG POPUP *******************************************
 class OutputLangController extends StatefulWidget {
    final Function(String) onSelected;
 
@@ -116,10 +111,6 @@ class OutputLangController extends StatefulWidget {
     PopupMenuItem<String>(
       value: 'ar',
       child: Text('ARAPÇA'),
-    ),
-    PopupMenuItem<String>(
-      value: 'zc',
-      child: Text('ÇİNCE'),
     )
   ];
   @override
@@ -139,30 +130,39 @@ class _OutputLangControllerState extends State<OutputLangController> {
     );
   }
 }
+//****************** TRANSALTE BUTTON ******************************************
+class TransalateButtonController extends GetxController {
+  static RxString responseTranslate = "".obs;
 
-//*************** MENU ICON ************************************************************
-
-class MenuIconController{
-  static void menuIconController(){
-    print("menuIconController cagrıldı");
+  static Future<String> translateButtonController(String word, String language1, String language2) async {
+    if (word.isEmpty) {
+      word = UITextHelper.errorEmpty;
+    }
+    print("translateButtonController called");
+    final translator = GoogleTranslator();
+    // Show CircularProgressIndicator
+    Get.dialog(
+      Center(
+        child: SpinKitWanderingCubes(
+          color: Colors.white,
+          size: 150,
+          duration: Duration(milliseconds: 250),
+        ),
+      ),
+    );
+    String translatedText = await translator.translate(word, from: language1, to: language2).then((s) {
+      responseTranslate.value = s.text;
+      print(s);
+      return responseTranslate.value;
+    });
+    // Wait for 0.5 seconds
+    await Future.delayed(Duration(milliseconds: 500 ));
+    // Hide CircularProgressIndicator
+    Get.back();
+    return translatedText;
   }
 }
-//****************** GREY CHANGE LANG ICON ******************************************************
-
-class ChangeLangIconController{
-  static void changeLangIconController(){
-    print("changeLangIconControlle cagrıldı");
-  }
-}
-
-//****************** TRANSALTE BUTTON ******************************************************
-class TransalateButtonController{
-  static void translateButtonController(){
-    print("trasnlateButtonController cagrıldı");
-  }
-}
-
-//****************** İN BOX ICONS ******************************************************
+//****************** İN BOX ICONS ***********************************************
 abstract class InBoxIconsController extends StatefulWidget{
   @override
   static copyController(String text,context){
@@ -198,13 +198,11 @@ abstract class InBoxIconsController extends StatefulWidget{
     print("voiceControllerOutput cagrıldı");
   }
 }
-//****************************** BİLDİRİM ********************************************************
-
+//****************************** TOAST BİLDİRİM **************************************
 class FunkyNotification extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => FunkyNotificationState();
 }
-
 class FunkyNotificationState extends State<FunkyNotification> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> position;
@@ -257,5 +255,11 @@ class FunkyNotificationState extends State<FunkyNotification> with SingleTickerP
         ),
       ),
     );
+  }
+}
+//*************** MENU ICON ****************************************************
+class MenuIconController{
+  static void menuIconController(){
+    print("menuIconController cagrıldı");
   }
 }

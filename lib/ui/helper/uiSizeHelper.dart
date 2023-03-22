@@ -26,6 +26,8 @@ class UISizeHelper{
   static const double translateButtonHeight = 0.2;
   static const double translateButtonWidth = 0.38;
 
+  // padding size
+  static const double translateButtonPadding = 10;
 
 
   // icons sizes

@@ -57,6 +57,8 @@ class UIColorsHelper{
   static const Color light_notificationColor = Color(0xFFC8D8F6);
   static const Color light_notificationTextColor = Color(0xff8d8d8d);
 
+  // error text color
+  static const Color errorColor = Color(0xffe10606);
 
 
 

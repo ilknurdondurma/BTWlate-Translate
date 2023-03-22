@@ -40,7 +40,7 @@ class _GeneralThemeWidgetStyleState extends State<GeneralThemeWidgetStyle> {
 
         // header icon Alignment (menu icon)
         Positioned(
-          top: 0,
+          top: 10,
           left: 10,
           child: Container(
             alignment: Alignment.centerLeft,

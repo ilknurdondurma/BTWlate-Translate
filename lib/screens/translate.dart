@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:btwlate/ui/helper/uiSizeHelper.dart';
 import 'package:btwlate/ui/helper/uiSpaceHelper.dart';
 import 'package:btwlate/ui/styles/styles/decorationStyles.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 
 import '../controller/translatePageController.dart';
 import '../ui/helper/uiColorsHelper.dart';
@@ -27,12 +30,12 @@ class _TranslatePageState extends State<TranslatePage> {
   }
   TextEditingController _textEditingController=TextEditingController();
   TextEditingController _textEditingController2=TextEditingController();
-  final globalScaffoldKey = GlobalKey<ScaffoldMessengerState>();
+  final responseTranslateController=Get.put(TransalateButtonController());
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        key: globalScaffoldKey,
         backgroundColor: UIColorsHelper.light_Background,
         body: ScaffoldMessenger(
           child: SingleChildScrollView(
@@ -53,11 +56,18 @@ class _TranslatePageState extends State<TranslatePage> {
                           });
                         },
                       ),
-                      const MyIconButtonWidget(
+                      MyIconButtonWidget(
                           icon: Icons.swap_horiz,
                           color: UIColorsHelper.light_body_IconColor,
                           size: UISizeHelper.iconChangeLangSize,
-                          onPressed: ChangeLangIconController.changeLangIconController),
+                          onPressed: () {
+                           setState(() {
+                             String temp=widget.initialLang2;
+                             widget.initialLang2=widget.initialLang1;
+                             widget.initialLang1=temp;
+                           });
+                          },
+                      ),
                       Text(widget.initialLang2, style: UITextStyles.translatePageCompanentStyle),
                       OutputLangController(
                         onSelected: (selectedValue) {
@@ -145,19 +155,24 @@ class _TranslatePageState extends State<TranslatePage> {
                 ),
                 //transalte button
                 GestureDetector(
-                  onTap: TransalateButtonController.translateButtonController,
+                  onTap: ()async{
+                    await TransalateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
+                  },
                   child: Container(
                       width:UISpaceHelper.dynamicWidth(context,  UISizeHelper.translateButtonWidth,),
                   constraints: const BoxConstraints(
                   minWidth: UISizeHelper.translateButtonWidth,
                   minHeight: UISizeHelper.translateButtonHeight,),
                     decoration: UIDecorationStyles.translateButtonContainerStyle,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),
-                          const MyIconButtonWidget(icon: Icons.send, color: UIColorsHelper.translateButtonItemColor, size: UISizeHelper.iconTranslateSize, onPressed: TransalateButtonController.translateButtonController),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.all(UISizeHelper.translateButtonPadding),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),
+                            Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
+                          ],
+                        ),
                       )),
                 ),
                 //seperator t1-t2
@@ -179,25 +194,32 @@ class _TranslatePageState extends State<TranslatePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        MyIconButtonWidget(
-                            icon: Icons.copy,
-                            color: UIColorsHelper.light_body_IconColor,
-                            size: UISizeHelper.inBoxIconsSize,
-                            onPressed: ()=>InBoxIconsController.copyController(_textEditingController2.text,context)),
-                        TextField(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                          MyIconButtonWidget(
+                              icon: Icons.copy,
+                              color: UIColorsHelper.light_body_IconColor,
+                              size: UISizeHelper.inBoxIconsSize,
+                              onPressed: ()=>InBoxIconsController.copyController(_textEditingController2.text,context)),
+                          MyIconButtonWidget(
+                              icon: Icons.volume_up_outlined,
+                              color: UIColorsHelper.light_body_IconColor,
+                              size: UISizeHelper.inBoxIconsSize,
+                              onPressed: InBoxIconsController.voiceControllerOutput),
+                        ],),
+                        Obx(()=>TextFormField(
+                          maxLength: 20,
                           controller: _textEditingController2,
                           decoration: InputDecoration(
                             alignLabelWithHint: false,
-                            hintText: "",
-                            border: UnderlineInputBorder()
+                            //hintText: "${TransalateButtonController.responseTranslate.value}",
+                            border: UnderlineInputBorder(borderSide: BorderSide.none),
                           ),
-                          maxLines: null,
-                        ),
-                        MyIconButtonWidget(
-                            icon: Icons.volume_up_outlined,
-                            color: UIColorsHelper.light_body_IconColor,
-                            size: UISizeHelper.inBoxIconsSize,
-                            onPressed: InBoxIconsController.voiceControllerOutput)
+                          maxLines: 10,
+                          maxLengthEnforcement: MaxLengthEnforcement.truncateAfterCompositionEnds
+
+                        ),),
 
                       ],
                     ),
