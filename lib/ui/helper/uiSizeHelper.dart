@@ -32,6 +32,10 @@ class UISizeHelper{
   // drawer sizes
   static const double drawerAvatarRadius = 40;
 
+  // listtile sizes
+  static const double listTileRadius = 0;
+  static const double listTileHeight = 65;
+
 
 
   // icons sizes

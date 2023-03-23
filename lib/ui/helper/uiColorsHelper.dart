@@ -41,6 +41,8 @@ class UIColorsHelper{
   static const Color light_heaader_IconColor = Color(0xFFFFFFFF);
   static const Color dark_body_IconColor = Color(0xFFFFFFFF);
   static const Color light_body_IconColor = Color(0xff8d8d8d);
+  static const Color light_settingsIconColor = Color(0xff528df9);
+
 
   //splash colors
   static const Color splashIconColor=Color(0xFF000000);
@@ -64,8 +66,13 @@ class UIColorsHelper{
   static const Color light_notificationColor = Color(0xFFC8D8F6);
   static const Color light_notificationTextColor = Color(0xff8d8d8d);
 
-  // error text color
-  static const Color errorColor = Color(0xffe10606);
+
+  // listtile  COLOR
+  static const Color light_ListTile_border_Color=Color(0xff9fa1a6);
+  static const Color light_ListTile_text_color=Color(0xff454749);
+
+
+
 
 
 

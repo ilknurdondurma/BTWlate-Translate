@@ -23,4 +23,10 @@ class UIDecorationStyles {
       color: UIColorsHelper.light_TranslateButtonBackground,
       borderRadius: BorderRadius.circular(UISizeHelper.translateButtonContainerCircular),);
 
+  static BoxDecoration settingsListTileContainerStyle = BoxDecoration(
+    color: UIColorsHelper.light_Background,
+    borderRadius: BorderRadius.circular(UISizeHelper.listTileRadius),
+    border: Border.all(strokeAlign:1,color: UIColorsHelper.light_ListTile_border_Color, width: 0.25 )
+
+  );
 }

@@ -5,6 +5,8 @@ import 'package:btwlate/ui/styles/styles/textStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../ui/helper/uiColorsHelper.dart';
+
 class favoritesPage extends StatefulWidget {
   const favoritesPage({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class _favoritesPageState extends State<favoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: UIColorsHelper.light_Background,
       body: SingleChildScrollView(
           child: Column(
             children: [

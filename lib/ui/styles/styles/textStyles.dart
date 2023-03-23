@@ -20,9 +20,19 @@ class UITextStyles {
       fontSize: 30,
       );
 
+  static TextStyle translatePageResponseTextStyle = const TextStyle(
+    color: UIColorsHelper.light_ListTile_text_color,
+    fontSize: 16,
+  );
+
   static TextStyle translatePageButtonStyle = const TextStyle(
     color: UIColorsHelper.translateButtonItemColor,
     fontSize: 20,
+  );
+
+  static TextStyle settingsPageStyle = const TextStyle(
+    color: UIColorsHelper.light_ListTile_text_color,
+    fontSize: 18,
   );
   static TextStyle drawerHeaderTextStyle = const TextStyle(
     color: UIColorsHelper.light_Drawer_header_textColor,

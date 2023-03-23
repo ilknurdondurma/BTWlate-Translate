@@ -209,10 +209,12 @@ class _TranslatePageState extends State<TranslatePage> {
                               size: UISizeHelper.inBoxIconsSize,
                               onPressed: InBoxIconsController.voiceControllerOutput),
                         ],),
+                        SizedBox(height: 15,),
                         Obx(()=>SelectableText(
                           maxLines: null,
                           "${TransalateButtonController.responseTranslate.value}"??"",
                           textAlign: TextAlign.start,
+                          style: UITextStyles.translatePageResponseTextStyle,
                         ),
                         ),
                       ],
