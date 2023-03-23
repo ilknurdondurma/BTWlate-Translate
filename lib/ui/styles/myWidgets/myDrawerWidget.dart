@@ -43,7 +43,7 @@ class drawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: Text(UITextHelper.favorites,style: UITextStyles.drawerBodyTextStyle,),
-            onTap: ()=>Get.to(()=>const favoritesPage()),
+            onTap: ()=>Get.to(()=> favoritesPage()),
           ),
           ListTile(
             title: Text(UITextHelper.settings,style: UITextStyles.drawerBodyTextStyle,),

@@ -10,6 +10,8 @@ class UITextHelper {
   static const String translateButton = "Translate";
   static const String hintText="Enter Someting";
   static const String copyText="copy success";
+  static const String likeText="favorite success";
+
 
 
   // drawer Items

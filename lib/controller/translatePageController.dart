@@ -8,10 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
-
-
 //**************** INPUT LANG POPUP ********************************************
 class InputLangController extends StatefulWidget {
   final Function(String) onSelected;
@@ -163,9 +162,58 @@ class TransalateButtonController extends GetxController {
     return translatedText;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //****************** İN BOX ICONS **********************************************
 abstract class InBoxIconsController extends StatefulWidget{
+
+// ! hata baslangıç************************
+
+  static final box = GetStorage();
   @override
+    static void favoriteController(String textKey, String textValue) {
+      print("favoriteController cagrıldı");
+      // List<dynamic> favorites = box.read('favorites') ?? [];
+      // favorites.add({"kelime": textKey, "anlami": textValue});
+      // box.write('favorites', favorites);
+      // Fluttertoast.showToast(
+      //
+      //     msg: UITextHelper.likeText,
+      //     toastLength: Toast.LENGTH_SHORT,
+      //     gravity: ToastGravity.BOTTOM,
+      //     backgroundColor: Colors.grey,
+      //     textColor: Colors.white,
+      //     fontSize: 16.0
+      // );
+    }
+  // static List<Map<dynamic, dynamic>> get favoritesList =>
+  //     (box.read<List<Map<dynamic, dynamic>>>('favorites') ?? []);
+
+
+// ! hata biitiş***************************
+
+
+
+
+
+
+
+
+
+
+
 
   static copyController(String text,context){
     print("copyControllerInput cagrıldı");
@@ -175,88 +223,24 @@ abstract class InBoxIconsController extends StatefulWidget{
     else {
       Clipboard.setData(ClipboardData(text: text)).then((value) => {
 
-      Fluttertoast.showToast(
+        Fluttertoast.showToast(
 
-      msg: UITextHelper.copyText,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.grey,
-      textColor: Colors.white,
-      fontSize: 16.0
-      )
+            msg: UITextHelper.copyText,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.grey,
+            textColor: Colors.white,
+            fontSize: 16.0
+        )
 
       });
     }
   }
-
-  static void favoriteController(String textKey,String textValue){
-    print("favoriteController cagrıldı");
-  }
-
   static void voiceControllerInput(){
     print("voiceControllerInput cagrıldı");
   }
   static void voiceControllerOutput(){
     print("voiceControllerOutput cagrıldı");
-  }
-}
-//****************************** TOAST BİLDİRİM ********************************
-class FunkyNotification extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => FunkyNotificationState();
-}
-class FunkyNotificationState extends State<FunkyNotification> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> position;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
-    position = Tween<Offset>(begin: Offset(0.0, -4.0), end: Offset.zero)
-        .animate(
-        CurvedAnimation(parent: _controller, curve: Curves.bounceInOut));
-    Future.delayed(Duration(seconds: 1), () {
-      _controller.forward();
-    });
-  }
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Material(
-        color: Colors.transparent,
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding: EdgeInsets.only(top: 32.0),
-            child: SlideTransition(
-              position: position,
-              child: Container(
-                decoration: ShapeDecoration(
-                    color: UIColorsHelper.light_notificationColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16.0))),
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    UITextHelper.copyText,
-                    style: TextStyle(
-                        color: UIColorsHelper.light_notificationTextColor, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
 //*************** MENU ICON ****************************************************

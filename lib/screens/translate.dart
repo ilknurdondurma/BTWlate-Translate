@@ -7,6 +7,7 @@ import 'package:btwlate/ui/helper/uiSpaceHelper.dart';
 import 'package:btwlate/ui/styles/styles/decorationStyles.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../controller/translatePageController.dart';
 import '../ui/helper/uiColorsHelper.dart';
 import '../ui/styles/myWidgets/myDrawerWidget.dart';
@@ -31,6 +32,7 @@ class _TranslatePageState extends State<TranslatePage> {
   TextEditingController _textEditingController=TextEditingController();
   final responseTranslateController=Get.put(TransalateButtonController());
   final scaffoldkey = GlobalKey<ScaffoldState>();
+
 
 
   @override
