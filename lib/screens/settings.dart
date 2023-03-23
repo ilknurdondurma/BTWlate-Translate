@@ -1,3 +1,4 @@
+import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/screens/translate.dart';
 import 'package:btwlate/ui/helper/uiColorsHelper.dart';
 import 'package:btwlate/ui/helper/uiSizeHelper.dart';
@@ -30,20 +31,24 @@ class _settingsPageState extends State<settingsPage> {
               GeneralThemeWidgetStyle(
                   child: Text(UITextHelper.settingsHeader,style: UITextStyles.PagesHeaderStyle,),
                   iconChild: Icon(Icons.arrow_back_ios),
-                  headerIconFunc: ()=>Get.offAndToNamed(TranslatePage().toString())
+                  height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
+                  headerIconFunc: ()=>Get.to(()=>TranslatePage())
               ),
               Column(
                 children: [
                   SizedBox(height: UISpaceHelper.dynamicHeight(context, UISizeHelper.seperateHeight_gh_t1),),
-                  ListTileContainer(
+                  MyListTileContainer(
                     text: UITextHelper.changeAccount,
                     color: UIColorsHelper.light_settingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
-                    onPressed: (){print("change account");},
+                    onPressed: (){
+                      print("change account");
+                      Get.to(()=>LoginPage());
+                      },
                     icon: Icons.account_circle_rounded,
 
                   ),
-                  ListTileContainer(
+                  MyListTileContainer(
                     text: UITextHelper.theme,
                     color: UIColorsHelper.light_settingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
@@ -51,7 +56,7 @@ class _settingsPageState extends State<settingsPage> {
                     icon: Icons.color_lens,
 
                   ),
-                  ListTileContainer(
+                  MyListTileContainer(
                     text: UITextHelper.logOut,
                     color: UIColorsHelper.light_settingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,

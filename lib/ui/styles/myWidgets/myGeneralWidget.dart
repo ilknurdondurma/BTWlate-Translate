@@ -8,12 +8,15 @@ class GeneralThemeWidgetStyle extends StatefulWidget {
   final Widget child;// child parametresi burada tanımlanır
   final Widget iconChild;
   final  Function() headerIconFunc;
+  final double? height;
 
   const GeneralThemeWidgetStyle({
     super.key,
     required this.child,
     required this.iconChild,
     required this.headerIconFunc,
+    this.height
+
   });
 
   @override
@@ -62,7 +65,7 @@ class _GeneralThemeWidgetStyleState extends State<GeneralThemeWidgetStyle> {
               alignment: Alignment.center,
               //grinin genişlik ve yukseklik oranları
               width: UISpaceHelper.dynamicWidth(context, UISizeHelper.smallHeaderWidth),
-              height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
+              height: widget.height,
               decoration: UIDecorationStyles.smallHeaderContainerStyle,
               child: widget.child,
             ),

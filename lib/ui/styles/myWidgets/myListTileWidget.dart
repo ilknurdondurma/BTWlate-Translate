@@ -5,15 +5,15 @@ import '../styles/decorationStyles.dart';
 import '../styles/textStyles.dart';
 import 'myIconButtonWidget.dart';
 
-class ListTileContainer extends StatelessWidget {
+class MyListTileContainer extends StatelessWidget {
   final String text;
   final IconData icon;
   final Color color;
   final double size;
   final Function() onPressed;
 
-  const ListTileContainer({
-    super.key,
+
+  const MyListTileContainer({
     required this.text,
     required this.icon,
     required this.color,

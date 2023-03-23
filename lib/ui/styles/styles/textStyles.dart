@@ -10,9 +10,8 @@ class UITextStyles {
       fontWeight: FontWeight.w500);
 
   static TextStyle loginStyle = const TextStyle(
-      fontFamily: "DancingScript",
       color: UIColorsHelper.light_TextFont_Color,
-      fontSize: 20,
+      fontSize: 25,
       fontWeight: FontWeight.w500);
 
   static TextStyle translatePageCompanentStyle = const TextStyle(
