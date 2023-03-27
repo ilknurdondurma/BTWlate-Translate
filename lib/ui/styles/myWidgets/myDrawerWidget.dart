@@ -10,8 +10,10 @@ import 'package:get/get.dart';
 import '../../../screens/favorites.dart';
 
 class drawerWidget extends StatelessWidget {
+  final String name;
   const drawerWidget({
     super.key,
+    required this.name
   });
 
   @override
@@ -27,7 +29,7 @@ class drawerWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const CircleAvatar(radius: UISizeHelper.drawerAvatarRadius,),
-                Text("NAME SURNAME",style: UITextStyles.drawerHeaderTextStyle),
+                Text(name,style: UITextStyles.drawerHeaderTextStyle),
                 Row(
                   children: [
                     Text("@testnick",style: UITextStyles.drawerHeaderTextStyle),
