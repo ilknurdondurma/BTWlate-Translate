@@ -1,6 +1,9 @@
+import 'package:btwlate/auth/firebaseConroller.dart';
 import 'package:btwlate/ui/helper/uiTextHelper.dart';
 import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
 import 'package:btwlate/ui/styles/styles/textStyles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:btwlate/ui/helper/uiSizeHelper.dart';
 import 'package:btwlate/ui/helper/uiSpaceHelper.dart';
@@ -16,7 +19,7 @@ import '../ui/styles/myWidgets/myGeneralWidget.dart';
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {
   final String? name; //Sign google name surname
-  TranslatePage({ this.name});
+  TranslatePage({this.name});
   String initialLang1 = "tr";
   String initialLang2 = "en";
 
@@ -26,8 +29,9 @@ class TranslatePage extends StatefulWidget {
 
 class _TranslatePageState extends State<TranslatePage> {
   @override
-  void initState() {
+  void initState(){
     super.initState();
+    widget.name;
   }
 
   TextEditingController _textEditingController=TextEditingController();
@@ -142,7 +146,7 @@ class _TranslatePageState extends State<TranslatePage> {
                                 icon: Icons.favorite_border,
                                 color: UIColorsHelper.light_body_IconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: ()=>InBoxIconsController.favoriteController(_textEditingController.text,"${TransalateButtonController.responseTranslate.value}"??"")),
+                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,"${TransalateButtonController.responseTranslate.value}"??"")),
                             MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
                                 color: UIColorsHelper.light_body_IconColor,

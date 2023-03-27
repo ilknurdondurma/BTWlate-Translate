@@ -1,14 +1,12 @@
-import 'package:btwlate/controller/translatePageController.dart';
 import 'package:btwlate/screens/translate.dart';
 import 'package:btwlate/ui/helper/uiSizeHelper.dart';
 import 'package:btwlate/ui/helper/uiTextHelper.dart';
 import 'package:btwlate/ui/styles/myWidgets/myGeneralWidget.dart';
-import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
-import 'package:btwlate/ui/styles/styles/decorationStyles.dart';
 import 'package:btwlate/ui/styles/styles/textStyles.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../ui/helper/uiColorsHelper.dart';
 import '../ui/helper/uiSpaceHelper.dart';
@@ -21,12 +19,10 @@ class favoritesPage extends StatefulWidget {
 }
 
 class _favoritesPageState extends State<favoritesPage> {
-  final box = GetStorage();
-
-  @override
+  final FirebaseAuth auth = FirebaseAuth.instance;
   void initState() {
     super.initState();
-    box.initStorage; // initialize the storage
+    // initialize the storage
   }
 
   @override
@@ -34,67 +30,67 @@ class _favoritesPageState extends State<favoritesPage> {
     return Scaffold(
       backgroundColor: UIColorsHelper.light_Background,
       body: SingleChildScrollView(
-          child: Column(
-        children: [
-          GeneralThemeWidgetStyle(
+        child: Column(
+          children: [
+            GeneralThemeWidgetStyle(
               iconChild: const Icon(Icons.arrow_back_ios),
-              headerIconFunc: () => Get.to(() => TranslatePage()),
-              height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
+              headerIconFunc: () =>
+                  Get.to(() => TranslatePage()),
+              height: UISpaceHelper.dynamicHeight(
+                  context, UISizeHelper.smallHeaderHeight),
               child: Text(
                 UITextHelper.favoritesHeader,
                 style: UITextStyles.PagesHeaderStyle,
-              )),
-
-          // ! hata baslangıç**************************
-
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: InBoxIconsController.favoritesList.length,
-            itemBuilder: (BuildContext context, int index) {
-              Map favorite = InBoxIconsController.favoritesList[index];
-              return Dismissible(
-                key: UniqueKey(),
-                onDismissed: (direction) {
-                  setState(() {
-                    InBoxIconsController.favoritesList.removeAt(index);
+              ),
+            ),
+            Container(
+              height: UISpaceHelper.dynamicHeight(context, 1),
+              child: FutureBuilder(
+                future: FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(auth.currentUser?.email)
+                    .get(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  Map<String, dynamic> data =
+                  snapshot.data!.data() as Map<String, dynamic>;
+                  List<String> fieldList = [];
+                  data.forEach((key, value) {
+                    fieldList.add('$key   :   $value');
                   });
+                  return ListView.builder(
+                    itemCount: fieldList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      String field = fieldList[index];
+                      return Dismissible(
+                        key: Key(field),
+                        onDismissed: (direction) async {
+                          await FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(auth.currentUser?.email)
+                              .update({field.split('   :   ')[0]: FieldValue.delete()});
+                          setState(() {
+                            fieldList.removeAt(index);
+                          });
+                        },
+                        background: Container(color: Colors.red),
+                        child: ListTile(
+                          title: Text(field),
+                        ),
+                      );
+                    },
+                  );
                 },
-                background: Container(
-                  color: Colors.red,
-                  child: const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16.0),
-                      child: Icon(Icons.delete, color: Colors.white),
-                    ),
-                  ),
-                ),
-                direction: DismissDirection.endToStart,
-                child: Container(
-                  decoration: UIDecorationStyles.settingsListTileContainerStyle,
-                  child: ListTile(
-                    title: Text(favorite['kelime']!),
-                    subtitle: Text(favorite['anlami']!),
-                    trailing: MyIconButtonWidget(
-                      color: UIColorsHelper.light_settingsIconColor,
-                      size: UISizeHelper.iconSelectLang1Size,
-                      onPressed: (){
-                        setState(() {
-                          InBoxIconsController.favoritesList.removeAt(index);
-                        });
-                      },
-                      icon: Icons.delete,
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-          //
-          //! hata bitiş**********************
-        ],
-      )),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

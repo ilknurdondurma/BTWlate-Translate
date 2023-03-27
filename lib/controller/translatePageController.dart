@@ -174,30 +174,9 @@ class TransalateButtonController extends GetxController {
 }
 
 //****************** İN BOX ICONS **********************************************
-abstract class InBoxIconsController extends StatefulWidget {
-// ! hata baslangıç************************
+class InBoxIconsController {
+// like işlemi firebase.dart dosyasında
 
-  static final box = GetStorage();
-  @override
-  static void favoriteController(String textKey, String textValue) {
-    print("favoriteController cagrıldı");
-    List<dynamic> favorites = box.read('favorites') ?? [];
-    favorites.add({"kelime": textKey, "anlami": textValue});
-    box.write('favorites', favorites);
-    Fluttertoast.showToast(
-        //     //
-        msg: UITextHelper.likeText,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        backgroundColor: Colors.grey,
-        textColor: Colors.white,
-        fontSize: 16.0);
-  }
-
-  static List<dynamic> get favoritesList =>
-      (box.read<List<dynamic>>('favorites') ?? []);
-
-// ! hata biitiş***************************
 
   static copyController(String text, context) {
     print("copyControllerInput cagrıldı");
