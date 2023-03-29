@@ -1,9 +1,7 @@
 import 'package:btwlate/screens/login.dart';
-import 'package:btwlate/screens/translate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'screens/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future <void> main() async{
@@ -21,6 +19,6 @@ class Translate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  LoginPage();
+    return  const LoginPage();
   }
 }

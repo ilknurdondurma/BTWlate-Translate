@@ -1,8 +1,8 @@
 class UISizeHelper{
 
   // header sizes
-  static const double HeaderBottomLeftCircular = 100;
-  static const double HeaderBottomRightCircular = 100;
+  static const double headerBottomLeftCircular = 100;
+  static const double headerBottomRightCircular = 100;
   static const double headerVisibleHeight = 0.30;//0.30
 
 

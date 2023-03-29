@@ -1,21 +1,22 @@
 import 'package:btwlate/screens/settings.dart';
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
-import 'package:btwlate/ui/helper/uiTextHelper.dart';
-import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
-import 'package:btwlate/ui/styles/styles/textStyles.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/styles/styles/text_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../screens/favorites.dart';
 
-class drawerWidget extends StatelessWidget {
+
+class DrawerWidget extends StatelessWidget {
   final String name;
-  const drawerWidget({
+  DrawerWidget({
     super.key,
     required this.name
   });
-
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -23,7 +24,7 @@ class drawerWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: const BoxDecoration(color: UIColorsHelper.light_Drawer_header),
+            decoration: const BoxDecoration(color: UIColorsHelper.lightDrawerHeader),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,11 +46,11 @@ class drawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: Text(UITextHelper.favorites,style: UITextStyles.drawerBodyTextStyle,),
-            onTap: ()=>Get.to(()=> favoritesPage()),
+            onTap: ()=>Get.to(()=> const FavoritesPage()),
           ),
           ListTile(
             title: Text(UITextHelper.settings,style: UITextStyles.drawerBodyTextStyle,),
-            onTap: ()=>Get.to(()=>const settingsPage()),
+            onTap: ()=>Get.to(()=>const SettingsPage()),
           ),
 
         ],

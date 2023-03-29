@@ -1,56 +1,54 @@
 import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/screens/translate.dart';
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
-import 'package:btwlate/ui/helper/uiSpaceHelper.dart';
-import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
-import 'package:btwlate/ui/styles/styles/decorationStyles.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/ui_space_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../ui/helper/uiTextHelper.dart';
+import '../ui/helper/ui_text_helper.dart';
 import '../ui/styles/myWidgets/myGeneralWidget.dart';
 import '../ui/styles/myWidgets/myListTileWidget.dart';
-import '../ui/styles/styles/textStyles.dart';
+import '../ui/styles/styles/text_styles.dart';
 
-class settingsPage extends StatefulWidget {
-  const settingsPage({Key? key}) : super(key: key);
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
   @override
-  State<settingsPage> createState() => _settingsPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _settingsPageState extends State<settingsPage> {
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColorsHelper.light_Background,
+      backgroundColor: UIColorsHelper.lightBackground,
       body: SingleChildScrollView(
           child: Column(
             children: [
               GeneralThemeWidgetStyle(
-                  child: Text(UITextHelper.settingsHeader,style: UITextStyles.PagesHeaderStyle,),
-                  iconChild: Icon(Icons.arrow_back_ios),
+                  iconChild: const Icon(Icons.arrow_back_ios),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
-                  headerIconFunc: ()=>Get.to(()=>TranslatePage())
+                  headerIconFunc: ()=>Get.to(()=>TranslatePage()),
+                  child: Text(UITextHelper.settingsHeader,style: UITextStyles.pagesHeaderStyle,)
               ),
               Column(
                 children: [
                   SizedBox(height: UISpaceHelper.dynamicHeight(context, UISizeHelper.seperateHeight_gh_t1),),
                   MyListTileContainer(
                     text: UITextHelper.changeAccount,
-                    color: UIColorsHelper.light_settingsIconColor,
+                    color: UIColorsHelper.lightSettingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
                     onPressed: (){
                       print("change account");
-                      Get.to(()=>LoginPage());
+                      Get.to(()=>const LoginPage());
                       },
                     icon: Icons.account_circle_rounded,
 
                   ),
                   MyListTileContainer(
                     text: UITextHelper.theme,
-                    color: UIColorsHelper.light_settingsIconColor,
+                    color: UIColorsHelper.lightSettingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
                     onPressed:(){print("theme");},
                     icon: Icons.color_lens,
@@ -58,7 +56,7 @@ class _settingsPageState extends State<settingsPage> {
                   ),
                   MyListTileContainer(
                     text: UITextHelper.logOut,
-                    color: UIColorsHelper.light_settingsIconColor,
+                    color: UIColorsHelper.lightSettingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
                     onPressed: (){print("exit");},
                     icon: Icons.logout,

@@ -1,49 +1,48 @@
-import 'package:btwlate/screens/translate.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
-import 'package:btwlate/ui/helper/uiTextHelper.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/myGeneralWidget.dart';
-import 'package:btwlate/ui/styles/styles/textStyles.dart';
+import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../ui/helper/uiColorsHelper.dart';
-import '../ui/helper/uiSpaceHelper.dart';
+import '../ui/helper/ui_colors_helper.dart';
+import '../ui/helper/ui_space_helper.dart';
 
-class favoritesPage extends StatefulWidget {
-  const favoritesPage({Key? key}) : super(key: key);
+class FavoritesPage extends StatefulWidget {
+  const FavoritesPage({Key? key}) : super(key: key);
 
   @override
-  State<favoritesPage> createState() => _favoritesPageState();
+  State<FavoritesPage> createState() => _FavoritesPageState();
 }
 
-class _favoritesPageState extends State<favoritesPage> {
+class _FavoritesPageState extends State<FavoritesPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  @override
   void initState() {
     super.initState();
-    // initialize the storage
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColorsHelper.light_Background,
+      backgroundColor: UIColorsHelper.lightBackground,
       body: SingleChildScrollView(
         child: Column(
           children: [
             GeneralThemeWidgetStyle(
               iconChild: const Icon(Icons.arrow_back_ios),
               headerIconFunc: () =>
-                  Get.to(() => TranslatePage()),
+                  Get.back(),
               height: UISpaceHelper.dynamicHeight(
                   context, UISizeHelper.smallHeaderHeight),
               child: Text(
                 UITextHelper.favoritesHeader,
-                style: UITextStyles.PagesHeaderStyle,
+                style: UITextStyles.pagesHeaderStyle,
               ),
             ),
-            Container(
+            SizedBox(
               height: UISpaceHelper.dynamicHeight(context, 1),
               child: FutureBuilder(
                 future: FirebaseFirestore.instance
@@ -53,7 +52,7 @@ class _favoritesPageState extends State<favoritesPage> {
                 builder: (BuildContext context,
                     AsyncSnapshot<DocumentSnapshot> snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
@@ -70,13 +69,15 @@ class _favoritesPageState extends State<favoritesPage> {
                       return Dismissible(
                         key: Key(field),
                         onDismissed: (direction) async {
-                          await FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(auth.currentUser?.email)
-                              .update({field.split('   :   ')[0]: FieldValue.delete()});
-                          setState(() {
-                            fieldList.removeAt(index);
-                          });
+                         setState(() async {
+                           await FirebaseFirestore.instance
+                               .collection('users')
+                               .doc(auth.currentUser?.email)
+                               .update({field.split('   :   ')[0]: FieldValue.delete()});
+                           setState(() {
+                             fieldList.removeAt(index);
+                           });
+                         });
                         },
                         background: Container(color: Colors.red),
                         child: ListTile(

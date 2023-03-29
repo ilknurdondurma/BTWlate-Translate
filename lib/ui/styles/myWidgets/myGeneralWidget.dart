@@ -1,8 +1,8 @@
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:flutter/material.dart';
-import '../../helper/uiSpaceHelper.dart';
-import '../styles/decorationStyles.dart';
+import '../../helper/ui_space_helper.dart';
+import '../styles/decoration_styles.dart';
 
 class GeneralThemeWidgetStyle extends StatefulWidget {
   final Widget child;// child parametresi burada tanımlanır
@@ -49,8 +49,8 @@ class _GeneralThemeWidgetStyleState extends State<GeneralThemeWidgetStyle> {
             alignment: Alignment.centerLeft,
             height: UISpaceHelper.dynamicHeight(context, 0.1),
             width: UISpaceHelper.dynamicWidth(context, 1),
-            color: UIColorsHelper.light_Header_Background,
-            child: IconButton(onPressed:()=>widget.headerIconFunc(),icon: widget.iconChild,color: UIColorsHelper.light_heaader_IconColor,),
+            color: UIColorsHelper.lightHeaderBackground,
+            child: IconButton(onPressed:()=>widget.headerIconFunc(),icon: widget.iconChild,color: UIColorsHelper.lightHeaaderIconColor,),
 
           ),
         ),

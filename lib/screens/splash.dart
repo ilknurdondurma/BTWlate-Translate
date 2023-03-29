@@ -1,7 +1,7 @@
 import 'package:btwlate/screens/translate.dart';
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
-import 'package:btwlate/ui/helper/uiTextHelper.dart';
-import 'package:btwlate/ui/styles/styles/textStyles.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 
@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: UIColorsHelper.light_Header_Background,
+        backgroundColor: UIColorsHelper.lightHeaderBackground,
         body: Center(
             child:SlideTransition(
               position: _offsetAnimation,

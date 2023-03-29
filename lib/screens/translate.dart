@@ -1,25 +1,21 @@
-import 'package:btwlate/auth/firebaseConroller.dart';
-import 'package:btwlate/ui/helper/uiTextHelper.dart';
+import 'package:btwlate/auth/firebase_controller.dart';
+import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
-import 'package:btwlate/ui/styles/styles/textStyles.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
-import 'package:btwlate/ui/helper/uiSpaceHelper.dart';
-import 'package:btwlate/ui/styles/styles/decorationStyles.dart';
-import 'package:flutter/services.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/ui_space_helper.dart';
+import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import '../controller/translatePageController.dart';
-import '../ui/helper/uiColorsHelper.dart';
+import '../controller/translate_page_controller.dart';
+import '../ui/helper/ui_colors_helper.dart';
 import '../ui/styles/myWidgets/myDrawerWidget.dart';
 import '../ui/styles/myWidgets/myGeneralWidget.dart';
 
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {
   final String? name; //Sign google name surname
-  TranslatePage({this.name});
+  TranslatePage({super.key, this.name});
   String initialLang1 = "tr";
   String initialLang2 = "en";
 
@@ -34,7 +30,7 @@ class _TranslatePageState extends State<TranslatePage> {
     widget.name;
   }
 
-  TextEditingController _textEditingController=TextEditingController();
+  final TextEditingController _textEditingController=TextEditingController();
   final responseTranslateController=Get.put(TransalateButtonController());
   final scaffoldkey = GlobalKey<ScaffoldState>();
 
@@ -45,7 +41,7 @@ class _TranslatePageState extends State<TranslatePage> {
     return MaterialApp(
       home: Scaffold(
         key: scaffoldkey,
-        backgroundColor: UIColorsHelper.light_Background,
+        backgroundColor: UIColorsHelper.lightBackground,
         body: ScaffoldMessenger(
           child: SingleChildScrollView(
             child: Column(
@@ -68,7 +64,7 @@ class _TranslatePageState extends State<TranslatePage> {
                       ),
                       MyIconButtonWidget(
                           icon: Icons.swap_horiz,
-                          color: UIColorsHelper.light_body_IconColor,
+                          color: UIColorsHelper.lightBodyIconColor,
                           size: UISizeHelper.iconChangeLangSize,
                           onPressed: () {
                            setState(() {
@@ -115,12 +111,12 @@ class _TranslatePageState extends State<TranslatePage> {
                           children: [
                             MyIconButtonWidget(
                                 icon: Icons.copy,
-                                color: UIColorsHelper.light_body_IconColor,
+                                color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: ()=>InBoxIconsController.copyController(_textEditingController.text,context)),
                             MyIconButtonWidget(
                                 icon: Icons.close,
-                                color: UIColorsHelper.light_body_IconColor,
+                                color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: ()=>_textEditingController.clear()),
                           ],
@@ -129,7 +125,7 @@ class _TranslatePageState extends State<TranslatePage> {
                         // textfield
                         TextField(
                           controller: _textEditingController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             alignLabelWithHint: true,
                             hintText: UITextHelper.hintText,
                             hoverColor: Colors.red,
@@ -144,12 +140,12 @@ class _TranslatePageState extends State<TranslatePage> {
                           children: [
                             MyIconButtonWidget(
                                 icon: Icons.favorite_border,
-                                color: UIColorsHelper.light_body_IconColor,
+                                color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,"${TransalateButtonController.responseTranslate.value}"??"")),
-                            MyIconButtonWidget(
+                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TransalateButtonController.responseTranslate.value)),
+                            const MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
-                                color: UIColorsHelper.light_body_IconColor,
+                                color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: InBoxIconsController.voiceControllerInput),
                           ],
@@ -180,7 +176,7 @@ class _TranslatePageState extends State<TranslatePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),
-                            Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
+                            const Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
                           ],
                         ),
                       )),
@@ -208,19 +204,19 @@ class _TranslatePageState extends State<TranslatePage> {
                           children: [
                           MyIconButtonWidget(
                               icon: Icons.copy,
-                              color: UIColorsHelper.light_body_IconColor,
+                              color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: ()=>InBoxIconsController.copyController("${TransalateButtonController.responseTranslate.value}"??"",context)),
-                          MyIconButtonWidget(
+                              onPressed: ()=>InBoxIconsController.copyController(TransalateButtonController.responseTranslate.value,context)),
+                          const MyIconButtonWidget(
                               icon: Icons.volume_up_outlined,
-                              color: UIColorsHelper.light_body_IconColor,
+                              color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
                               onPressed: InBoxIconsController.voiceControllerOutput),
                         ],),
-                        SizedBox(height: 15,),
+                        const SizedBox(height: 15,),
                         Obx(()=>SelectableText(
                           maxLines: null,
-                          "${TransalateButtonController.responseTranslate.value}"??"",
+                          TransalateButtonController.responseTranslate.value,
                           textAlign: TextAlign.start,
                           style: UITextStyles.translatePageResponseTextStyle,
                         ),
@@ -233,7 +229,7 @@ class _TranslatePageState extends State<TranslatePage> {
             ),
           ),
         ),
-        drawer: drawerWidget(name:widget.name!),
+        drawer: DrawerWidget(name:widget.name!),
       ),
     );
   }

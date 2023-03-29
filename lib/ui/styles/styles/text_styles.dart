@@ -1,5 +1,5 @@
 
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
 import 'package:flutter/material.dart';
 
 class UITextStyles {
@@ -10,17 +10,17 @@ class UITextStyles {
       fontWeight: FontWeight.w500);
 
   static TextStyle loginStyle = const TextStyle(
-      color: UIColorsHelper.light_TextFont_Color,
+      color: UIColorsHelper.lightTextFontColor,
       fontSize: 25,
       fontWeight: FontWeight.w500);
 
   static TextStyle translatePageCompanentStyle = const TextStyle(
-      color: UIColorsHelper.light_TextFont_Color,
+      color: UIColorsHelper.lightTextFontColor,
       fontSize: 30,
       );
 
   static TextStyle translatePageResponseTextStyle = const TextStyle(
-    color: UIColorsHelper.light_ListTile_text_color,
+    color: UIColorsHelper.lightListTileTextColor,
     fontSize: 16,
   );
 
@@ -30,21 +30,21 @@ class UITextStyles {
   );
 
   static TextStyle settingsPageStyle = const TextStyle(
-    color: UIColorsHelper.light_ListTile_text_color,
+    color: UIColorsHelper.lightListTileTextColor,
     fontSize: 18,
   );
   static TextStyle drawerHeaderTextStyle = const TextStyle(
-    color: UIColorsHelper.light_Drawer_header_textColor,
+    color: UIColorsHelper.lightDrawerHeaderTextColor,
     fontSize: 15,
   );
 
   static TextStyle drawerBodyTextStyle = const TextStyle(
-    color: UIColorsHelper.light_Drawer_body_textColor,
+    color: UIColorsHelper.lightDrawerBodyTextColor,
     fontSize: 15,
   );
 
-  static TextStyle PagesHeaderStyle = const TextStyle(
-    color: UIColorsHelper.light_title_textColor,
+  static TextStyle pagesHeaderStyle = const TextStyle(
+    color: UIColorsHelper.lightTitleTextColor,
     fontSize: 25,
   );
 

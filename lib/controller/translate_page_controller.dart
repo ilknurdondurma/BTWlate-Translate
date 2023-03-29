@@ -1,15 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
-import 'package:btwlate/ui/helper/uiTextHelper.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 
 //**************** INPUT LANG POPUP ********************************************
@@ -61,10 +59,10 @@ class _InputLangControllerState extends State<InputLangController> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      color: UIColorsHelper.light_popupBackgorundColor,
+      color: UIColorsHelper.lightPopupBackgorundColor,
       icon: Icon(
         Icons.keyboard_arrow_down_outlined,
-        color: UIColorsHelper.light_body_IconColor,
+        color: UIColorsHelper.lightBodyIconColor,
         size: UISizeHelper.iconSelectLang1Size,
       ),
       itemBuilder: (BuildContext context) {
@@ -123,10 +121,10 @@ class _OutputLangControllerState extends State<OutputLangController> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      color: UIColorsHelper.light_popupBackgorundColor,
+      color: UIColorsHelper.lightPopupBackgorundColor,
       icon: Icon(
         Icons.keyboard_arrow_down_outlined,
-        color: UIColorsHelper.light_body_IconColor,
+        color: UIColorsHelper.lightBodyIconColor,
         size: UISizeHelper.iconSelectLang2Size,
       ),
       itemBuilder: (BuildContext context) {

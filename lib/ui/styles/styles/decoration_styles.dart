@@ -1,32 +1,32 @@
-import 'package:btwlate/ui/helper/uiColorsHelper.dart';
-import 'package:btwlate/ui/helper/uiSizeHelper.dart';
+import 'package:btwlate/ui/helper/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:flutter/material.dart';
 
 class UIDecorationStyles {
   static BoxDecoration headerStyle = const BoxDecoration(
-      color: UIColorsHelper.light_Header_Background,
+      color: UIColorsHelper.lightHeaderBackground,
       borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(UISizeHelper.HeaderBottomLeftCircular),
-        bottomRight: Radius.circular(UISizeHelper.HeaderBottomRightCircular),
+        bottomLeft: Radius.circular(UISizeHelper.headerBottomLeftCircular),
+        bottomRight: Radius.circular(UISizeHelper.headerBottomRightCircular),
       ));
 
   
   static BoxDecoration smallHeaderContainerStyle = BoxDecoration(
-      color: UIColorsHelper.light_companenet_color,
+      color: UIColorsHelper.lightCompanentColor,
       borderRadius: BorderRadius.circular(UISizeHelper.smallHeaderContainerCircular));
 
   static BoxDecoration translateBoxContainerStyle = BoxDecoration(
-      color: UIColorsHelper.light_companenet_color,
+      color: UIColorsHelper.lightCompanentColor,
       borderRadius: BorderRadius.circular(UISizeHelper.translateBoxContainerCircular));
 
   static BoxDecoration translateButtonContainerStyle = BoxDecoration(
-      color: UIColorsHelper.light_TranslateButtonBackground,
+      color: UIColorsHelper.lightTranslateButtonBackground,
       borderRadius: BorderRadius.circular(UISizeHelper.translateButtonContainerCircular),);
 
   static BoxDecoration settingsListTileContainerStyle = BoxDecoration(
-    color: UIColorsHelper.light_Background,
+    color: UIColorsHelper.lightBackground,
     borderRadius: BorderRadius.circular(UISizeHelper.listTileRadius),
-    border: Border.all(strokeAlign:1,color: UIColorsHelper.light_ListTile_border_Color, width: 0.25 )
+    border: Border.all(strokeAlign:1,color: UIColorsHelper.lightListTileBorderColor, width: 0.25 )
 
   );
 }
