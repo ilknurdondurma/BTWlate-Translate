@@ -13,7 +13,7 @@ class UISizeHelper{
   static const double smallHeaderTopSpace = 0.18;
   static const double smallHeaderHeight = 0.12;//0.13
   static const double smallHeaderWidth = 0.90;
-  static const double smallHeaderHeightLogin = 0.80;//0.13 // login için
+  static const double smallHeaderHeightLogin = 0.80;// login için
 
 
 
@@ -27,9 +27,13 @@ class UISizeHelper{
   static const double translateButtonContainerCircular = 21;
   static const double translateButtonHeight = 0.2;
   static const double translateButtonWidth = 0.38;
-
-  // padding size
   static const double translateButtonPadding = 10;
+
+  // sign login buttons sizes
+  static const double loginButtonsContainerCircular = 40;
+  static const double loginButtonsHeight = 0.12;
+  static const double loginButtonsWidth = 0.88;
+  static const double loginButtonsPadding = 15;
 
   // drawer sizes
   static const double drawerAvatarRadius = 40;

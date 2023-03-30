@@ -67,17 +67,20 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     itemBuilder: (BuildContext context, int index) {
                       String field = fieldList[index];
                       return Dismissible(
-                        key: Key(field),
-                        onDismissed: (direction) async {
-                         setState(() async {
-                           await FirebaseFirestore.instance
-                               .collection('users')
-                               .doc(auth.currentUser?.email)
-                               .update({field.split('   :   ')[0]: FieldValue.delete()});
-                           setState(() {
-                             fieldList.removeAt(index);
-                           });
-                         });
+                        direction: DismissDirection.endToStart,
+                        key: Key(field[index]),
+                        onDismissed: (direction)  {
+                          FirebaseFirestore.instance
+                              .collection('users')
+                              .doc(auth.currentUser?.email)
+                              .update({
+                            field.split('   :   ')[0]: FieldValue.delete(),
+                          })
+                              .then((value) {
+                            setState(() {
+                              fieldList.removeAt(index);
+                            });
+                          });
                         },
                         background: Container(color: Colors.red),
                         child: ListTile(

@@ -1,45 +1,24 @@
-import 'package:btwlate/screens/translate.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSign {
   static Future<UserCredential?> signInWithGoogle() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount!.authentication;
+          final GoogleSignIn googleSignIn = GoogleSignIn();
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
-    );
+          final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
 
-    final UserCredential authResult =
-        await auth.signInWithCredential(credential);
-    final User? user = authResult.user;
+          if (googleSignInAccount != null) {
+            final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
 
-    if (user != null) {
-      assert(!user.isAnonymous);
+            final AuthCredential credential = GoogleAuthProvider.credential(
+              accessToken: googleSignInAuthentication.accessToken,
+              idToken: googleSignInAuthentication.idToken,
+            );
 
-      final User? currentUser = auth.currentUser;
-      assert(user.uid == currentUser!.uid);
+            final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+            return userCredential;
+          }
 
-
-      print('Google ile giriş yapıldı: ${user.displayName}');
-      Get.to(() => TranslatePage(name: '${user.displayName}'));
-      FirebaseFirestore.instance
-          .collection("users")
-          .doc('${user.email}');
-
-      // simdi sıra verileri firestoreye eklemek
-
-      return authResult;
-    }
-
-    return null;
-  }
+          return null;
+}
 }

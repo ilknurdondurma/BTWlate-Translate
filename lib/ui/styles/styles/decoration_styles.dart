@@ -29,4 +29,9 @@ class UIDecorationStyles {
     border: Border.all(strokeAlign:1,color: UIColorsHelper.lightListTileBorderColor, width: 0.25 )
 
   );
+
+  static BoxDecoration loginPageButtonsStyles = BoxDecoration(
+    color: UIColorsHelper.lightTranslateButtonBackground,
+    borderRadius: BorderRadius.circular(UISizeHelper.loginButtonsContainerCircular),);
+
 }

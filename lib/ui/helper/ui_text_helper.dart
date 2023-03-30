@@ -4,6 +4,14 @@ class UITextHelper {
   static const String signUp = "SIGN UP";
   static const String signInLower = "Sign in";
   static const String signUpLower = "Sign up";
+  static const String signHeading = "Sign Up Heading";
+  static const String signInGoogle = "Sign in with Google";
+  static const String signInFacebook = "Sign in with Facebook";
+  static const String signInEmail = "Sign in with Email";
+
+
+
+
   static const String privacyPolicy ="By proceeding you also agree to the Terms of Service and Privacy Policy";
 
   // translate Page

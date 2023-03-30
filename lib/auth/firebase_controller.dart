@@ -24,6 +24,14 @@ class FireBaseController{
     });
   }
 
+  static void deleteFavoriteController(field) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+     FirebaseFirestore.instance
+        .collection('users')
+        .doc(auth.currentUser?.email)
+        .update({field.split('   :   ')[0]: FieldValue.delete()});
+  }
+
 }
 
 

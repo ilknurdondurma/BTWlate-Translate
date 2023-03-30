@@ -31,6 +31,8 @@ class UIColorsHelper{
   static const Color lightTranslateButtonBackground=Color(0xff528df9);
   static const Color translateButtonItemColor=Color(0xFFFFFFFF);
 
+  //loginPage Buttons Icon Color
+  static const Color lightLoginPageButtonsIconColor = Color(0xFFFFFFFF);
 
   //  text fonst colors
   static const Color lightTextFontColor = Color(0xff8d8d8d);

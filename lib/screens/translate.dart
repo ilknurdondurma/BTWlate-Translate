@@ -9,6 +9,7 @@ import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:get/get.dart';
 import '../controller/translate_page_controller.dart';
 import '../ui/helper/ui_colors_helper.dart';
+import '../ui/styles/myWidgets/myContainerWidget.dart';
 import '../ui/styles/myWidgets/myDrawerWidget.dart';
 import '../ui/styles/myWidgets/myGeneralWidget.dart';
 
@@ -164,22 +165,23 @@ class _TranslatePageState extends State<TranslatePage> {
                   onTap: ()async{
                     await TransalateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
                   },
-                  child: Container(
-                      width:UISpaceHelper.dynamicWidth(context,  UISizeHelper.translateButtonWidth,),
-                  constraints: const BoxConstraints(
-                  minWidth: UISizeHelper.translateButtonWidth,
-                  minHeight: UISizeHelper.translateButtonHeight,),
+                  child: MyContainerButton(
+                    dynamicwidth: UISizeHelper.translateButtonWidth,
+                    dynamicheight: UISizeHelper.translateButtonHeight,
                     decoration: UIDecorationStyles.translateButtonContainerStyle,
-                      child: Padding(
-                        padding: const EdgeInsets.all(UISizeHelper.translateButtonPadding),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),
-                            const Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
-                          ],
-                        ),
-                      )),
+                    padding: UISizeHelper.translateButtonPadding,
+                    children: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),
+                        const Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
+                      ],
+                    ),
+
+
+
+
+                  ),
                 ),
                 //seperator t1-t2
                 SizedBox(
@@ -234,5 +236,7 @@ class _TranslatePageState extends State<TranslatePage> {
     );
   }
 }
+
+
 
 

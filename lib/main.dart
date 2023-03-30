@@ -1,4 +1,6 @@
 import 'package:btwlate/screens/login.dart';
+import 'package:btwlate/screens/translate.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -8,17 +10,27 @@ Future <void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await GetStorage.init();
-  runApp(const GetMaterialApp(
-    home: Translate(),
+  runApp( GetMaterialApp(
+    home: MyApp(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
-class Translate extends StatelessWidget {
-  const Translate({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return  const LoginPage();
+    User? user = _auth.currentUser;
+    if (user != null) {
+      return MaterialApp(
+        home: TranslatePage(name: user.displayName), // google ile giris yaplmişsa onceden
+      );
+    } else {
+      return const MaterialApp(
+        home: LoginPage(), // yapilmamişsa
+      );
+    }
   }
 }
