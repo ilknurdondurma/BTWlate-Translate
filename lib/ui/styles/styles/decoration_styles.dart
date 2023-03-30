@@ -15,6 +15,7 @@ class UIDecorationStyles {
       color: UIColorsHelper.lightCompanentColor,
       borderRadius: BorderRadius.circular(UISizeHelper.smallHeaderContainerCircular));
 
+
   static BoxDecoration translateBoxContainerStyle = BoxDecoration(
       color: UIColorsHelper.lightCompanentColor,
       borderRadius: BorderRadius.circular(UISizeHelper.translateBoxContainerCircular));

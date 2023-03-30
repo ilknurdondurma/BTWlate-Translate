@@ -13,7 +13,8 @@ class UISizeHelper{
   static const double smallHeaderTopSpace = 0.18;
   static const double smallHeaderHeight = 0.12;//0.13
   static const double smallHeaderWidth = 0.90;
-  static const double smallHeaderHeightLogin = 0.80;// login için
+  static const double smallHeaderHeightLogin = 0.12;// login için
+  static const double containerLogin = 0.70;// login için
 
 
 
