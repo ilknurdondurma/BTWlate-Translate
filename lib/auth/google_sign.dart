@@ -33,7 +33,7 @@ class GoogleSign {
     print("google");
     UserCredential? userCredential = await GoogleSign.signInWithGoogle();
     if (userCredential != null && userCredential.user != null) {
-      Get.offAll(TranslatePage());
+      Get.offAll(TranslatePage(name: userCredential.user?.displayName,));
     } else {
       print("Kullanıcı giriş yapmadı.");
       Get.to(SettingsPage());
