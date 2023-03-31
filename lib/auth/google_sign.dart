@@ -1,4 +1,4 @@
-import 'package:btwlate/auth/firebase_controller.dart';
+import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -54,9 +54,10 @@ class GoogleSign {
       Get.offAll(const LoginPage());
     }
     GoogleSign.logOutGoogle();
+    FireBaseController.deleteUserController();
     await auth.currentUser!.delete().then((value) async {
       // Hesap silme işlemi başarılı olduğunda yapılacaklar
-      FireBaseController.deleteUserController();
+
       print("Hesap silme işlemi başarılı");
     }).catchError((error) {
       // Hesap silme işlemi başarısız olduğunda yapılacaklar

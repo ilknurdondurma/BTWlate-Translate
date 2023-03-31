@@ -1,8 +1,8 @@
-import 'package:btwlate/auth/firebase_controller.dart';
+import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/auth/google_sign.dart';
 import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_Icon_Button_Widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +12,9 @@ import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:get/get.dart';
 import '../controller/translate_page_controller.dart';
 import '../ui/helper/ui_colors_helper.dart';
-import '../ui/styles/myWidgets/myContainerWidget.dart';
-import '../ui/styles/myWidgets/myDrawerWidget.dart';
-import '../ui/styles/myWidgets/myGeneralWidget.dart';
+import '../ui/styles/myWidgets/my_Container_Widget.dart';
+import '../ui/styles/myWidgets/my_Drawer_Widget.dart';
+import '../ui/styles/myWidgets/my_General_Widget.dart';
 
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_space_helper.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/myContainerWidget.dart';
-import 'package:btwlate/ui/styles/myWidgets/myGeneralWidget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_Container_Widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_General_Widget.dart';
 import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';

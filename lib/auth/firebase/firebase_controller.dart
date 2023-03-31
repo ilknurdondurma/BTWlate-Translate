@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../ui/helper/ui_text_helper.dart';
+import '../../ui/helper/ui_text_helper.dart';
 
 class FireBaseController{
   static void addUserController ()async {
@@ -30,7 +30,6 @@ class FireBaseController{
       print("Silme hatası: $e");
     }
   }
-
   static void addFavoriteController(String textKey, String textValue) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final user = auth.currentUser?.email;
@@ -49,7 +48,6 @@ class FireBaseController{
           fontSize: 16.0)
     });
   }
-
   static void deleteFavoriteController(field) {
     final FirebaseAuth auth = FirebaseAuth.instance;
      FirebaseFirestore.instance

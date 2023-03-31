@@ -1,6 +1,5 @@
 import 'package:btwlate/auth/google_sign.dart';
 import 'package:btwlate/screens/login.dart';
-import 'package:btwlate/screens/translate.dart';
 import 'package:btwlate/ui/helper/ui_colors_helper.dart';
 import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_space_helper.dart';
@@ -8,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../ui/helper/ui_text_helper.dart';
-import '../ui/styles/myWidgets/myGeneralWidget.dart';
-import '../ui/styles/myWidgets/myListTileWidget.dart';
+import '../ui/styles/myWidgets/my_General_Widget.dart';
+import '../ui/styles/myWidgets/my_ListTile_Widget.dart';
 import '../ui/styles/styles/text_styles.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -60,13 +59,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     text: UITextHelper.deleteAccount,
                     color: UIColorsHelper.lightSettingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
-                    onPressed: (){
-                      GoogleSign.deleteGoogle();
-
-                      print("delete ");
-
-
-                    },
+                    onPressed: ()=>buildShowDialog(context),
                     icon: Icons.logout,
 
                   ),
@@ -78,6 +71,38 @@ class _SettingsPageState extends State<SettingsPage> {
             ],
           )),
     );
+  }
+
+  Future<dynamic> buildShowDialog(BuildContext context) {
+    return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Opacity(
+                        opacity: 0.9,
+                        child: AlertDialog(
+                          icon: const Icon(Icons.cloud_outlined),
+                          actionsAlignment: MainAxisAlignment.start,
+                          title: const Text('Hesabınız kalıcı olarak silinecek onaylıyor musun'),
+                          actions: <Widget>[
+                            GestureDetector(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(Icons.delete),
+                                    Text('Hesabı Sil', textAlign: TextAlign.center),
+                                  ],
+                                ),
+                              onTap: (){
+                                  GoogleSign.deleteGoogle();
+                                  print("settingste silmeye basildi");
+                              },
+
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
   }
 }
 

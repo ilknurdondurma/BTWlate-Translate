@@ -1,6 +1,7 @@
+import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/myGeneralWidget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_General_Widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -70,17 +71,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         direction: DismissDirection.endToStart,
                         key: Key(field[index]),
                         onDismissed: (direction)  {
-                          FirebaseFirestore.instance
-                              .collection('users')
-                              .doc(auth.currentUser?.email)
-                              .update({
-                            field.split('   :   ')[0]: FieldValue.delete(),
-                          })
-                              .then((value) {
-                            setState(() {
-                              fieldList.removeAt(index);
-                            });
-                          });
+                          FireBaseController.deleteFavoriteController(field);
                         },
                         background: Container(color: Colors.red),
                         child: ListTile(
