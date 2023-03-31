@@ -1,3 +1,4 @@
+import 'package:btwlate/auth/google_sign.dart';
 import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/screens/translate.dart';
 import 'package:btwlate/ui/helper/ui_colors_helper.dart';
@@ -29,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
               GeneralThemeWidgetStyle(
                   iconChild: const Icon(Icons.arrow_back_ios),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
-                  headerIconFunc: ()=>Get.to(()=>TranslatePage()),
+                  headerIconFunc: ()=>Get.back(),
                   child: Text(UITextHelper.settingsHeader,style: UITextStyles.pagesHeaderStyle,)
               ),
               Column(
@@ -41,6 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     size: UISizeHelper.inBoxIconsSize,
                     onPressed: (){
                       print("change account");
+                      GoogleSign.logOutGoogle();
                       Get.to(()=>const LoginPage());
                       },
                     icon: Icons.account_circle_rounded,
@@ -55,10 +57,16 @@ class _SettingsPageState extends State<SettingsPage> {
 
                   ),
                   MyListTileContainer(
-                    text: UITextHelper.logOut,
+                    text: UITextHelper.deleteAccount,
                     color: UIColorsHelper.lightSettingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
-                    onPressed: (){print("exit");},
+                    onPressed: (){
+                      GoogleSign.deleteGoogle();
+
+                      print("delete ");
+
+
+                    },
                     icon: Icons.logout,
 
                   ),

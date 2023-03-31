@@ -34,7 +34,7 @@ class UITextHelper {
   //settingsPage
   static const String changeAccount = "Change Accounts";
   static const String theme = "Theme";
-  static const String logOut = "Log Out";
+  static const String deleteAccount = "Delete Account";
 
   //splash Page
   static const String btwlate = "BtwLate";

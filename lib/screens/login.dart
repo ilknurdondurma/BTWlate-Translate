@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.05)),
                   //buttons
                   GestureDetector(
-                    onTap:()=>GoogleSign.asas(),
+                    onTap:()=>GoogleSign.loginButtonGoogle(),
                     child: MyContainerButton(
                         dynamicwidth: UISizeHelper.loginButtonsWidth,
                         dynamicheight: UISizeHelper.loginButtonsHeight,

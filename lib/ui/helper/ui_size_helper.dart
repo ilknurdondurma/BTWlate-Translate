@@ -26,7 +26,7 @@ class UISizeHelper{
 
   // translate button sizes
   static const double translateButtonContainerCircular = 21;
-  static const double translateButtonHeight = 0.2;
+  static const double translateButtonHeight = 0.12;
   static const double translateButtonWidth = 0.38;
   static const double translateButtonPadding = 10;
 

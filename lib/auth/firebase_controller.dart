@@ -5,6 +5,32 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../ui/helper/ui_text_helper.dart';
 
 class FireBaseController{
+  static void addUserController ()async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      final docRef = firestore.collection('users').doc(currentUser.email);
+      await docRef.set({})
+          .then((value) => print('kullanici firebase e başarıyla eklendi.')).catchError(
+              (error) => print('kullanici firebase e  eklenirken hata oluştu: $error'));
+    } else {
+      print('Kullanıcı oturumu açmamış.');
+    }
+    return null;
+  }
+  static Future<void> deleteUserController() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    final docRef = firestore.collection('users').doc(auth.currentUser?.email);
+
+    try {
+      await docRef.delete();
+      print("Silme başarılı");
+    } catch (e) {
+      print("Silme hatası: $e");
+    }
+  }
+
   static void addFavoriteController(String textKey, String textValue) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final user = auth.currentUser?.email;

@@ -1,7 +1,10 @@
 import 'package:btwlate/auth/firebase_controller.dart';
+import 'package:btwlate/auth/google_sign.dart';
+import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/myIconButtonWidget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_space_helper.dart';
@@ -28,6 +31,11 @@ class _TranslatePageState extends State<TranslatePage> {
   @override
   void initState(){
     super.initState();
+    if (FirebaseAuth.instance.currentUser == null){
+      print("kullanici yok oyuzden logine yonlendirildi !");
+      GoogleSign.logOutGoogle();
+      Get.offAll(LoginPage());
+    }
     widget.name;
   }
 
