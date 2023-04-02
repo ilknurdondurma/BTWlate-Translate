@@ -1,3 +1,4 @@
+import 'package:btwlate/auth/facebook_sign.dart';
 import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_space_helper.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
@@ -43,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.05)),
                   //buttons
                   GestureDetector(
-                    onTap:()=>GoogleSign.loginButtonGoogle(),
+                    onTap:()=>GoogleSign.logInWithGoogle(),
                     child: MyContainerButton(
                         dynamicwidth: UISizeHelper.loginButtonsWidth,
                         dynamicheight: UISizeHelper.loginButtonsHeight,
@@ -62,21 +63,24 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.01)),
-                  MyContainerButton(
-                      dynamicwidth: UISizeHelper.loginButtonsWidth,
-                      dynamicheight: UISizeHelper.loginButtonsHeight,
-                      decoration: UIDecorationStyles.loginPageButtonsStyles,
-                      padding: UISizeHelper.loginButtonsPadding,
-                      children: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
-                          SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                          Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle),
-                          SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                  GestureDetector(
+                    onTap: ()=>FacebookSign.signUpWithFacebook(),
+                    child: MyContainerButton(
+                        dynamicwidth: UISizeHelper.loginButtonsWidth,
+                        dynamicheight: UISizeHelper.loginButtonsHeight,
+                        decoration: UIDecorationStyles.loginPageButtonsStyles,
+                        padding: UISizeHelper.loginButtonsPadding,
+                        children: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
+                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                            Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle),
+                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
 
-                        ],
-                      )
+                          ],
+                        )
+                    ),
                   ),
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.01)),
                   MyContainerButton(

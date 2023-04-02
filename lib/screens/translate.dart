@@ -33,7 +33,7 @@ class _TranslatePageState extends State<TranslatePage> {
     super.initState();
     if (FirebaseAuth.instance.currentUser == null){
       print("kullanici yok oyuzden logine yonlendirildi !");
-      GoogleSign.logOutGoogle();
+      GoogleSign.logOutGoogleAccount();
       Get.offAll(LoginPage());
     }
     widget.name;

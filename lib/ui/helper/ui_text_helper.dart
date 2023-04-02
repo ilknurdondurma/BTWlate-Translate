@@ -42,6 +42,13 @@ class UITextHelper {
 
   // error messages
   static const String errorEmpty = "Please Enter Someting or Try Again !!!!";
+  static const String deleteFailedError="Account deletion failed.Log in and Try again!";
+  static const String authFailedError="Account authentication failed.Log in and Try again!";
+  static const String error="Someting went wrong..Log in and Try again!";
+
+  // show dialog messages
+  static const String showDialogHeader="Do you confirm that your account will be permanently deleted? This action cannot be undone!";
+  static const String okShowDialog ="Confirm Deletion";
 
 }
 

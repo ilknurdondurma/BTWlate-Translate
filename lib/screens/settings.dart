@@ -1,4 +1,5 @@
-import 'package:btwlate/auth/google_sign.dart';
+import 'package:btwlate/auth/delete_user.dart';
+import 'package:btwlate/auth/logout_user.dart';
 import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/ui/helper/ui_colors_helper.dart';
 import 'package:btwlate/ui/helper/ui_size_helper.dart';
@@ -39,9 +40,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     text: UITextHelper.changeAccount,
                     color: UIColorsHelper.lightSettingsIconColor,
                     size: UISizeHelper.inBoxIconsSize,
-                    onPressed: (){
+                    onPressed: ()async{
                       print("change account");
-                      GoogleSign.logOutGoogle();
+                      await LogOutUser.logOutUser();
                       Get.to(()=>const LoginPage());
                       },
                     icon: Icons.account_circle_rounded,
@@ -82,18 +83,18 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: AlertDialog(
                           icon: const Icon(Icons.cloud_outlined),
                           actionsAlignment: MainAxisAlignment.start,
-                          title: const Text('Hesabınız kalıcı olarak silinecek onaylıyor musun'),
+                          title: const Text(UITextHelper.showDialogHeader),
                           actions: <Widget>[
                             GestureDetector(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: const [
                                     Icon(Icons.delete),
-                                    Text('Hesabı Sil', textAlign: TextAlign.center),
+                                    Text(UITextHelper.okShowDialog, textAlign: TextAlign.center),
                                   ],
                                 ),
-                              onTap: (){
-                                  GoogleSign.deleteGoogle();
+                              onTap: ()async {
+                                 await DeleteAccount.deleteUser();
                                   print("settingste silmeye basildi");
                               },
 

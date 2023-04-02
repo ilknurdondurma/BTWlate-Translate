@@ -28,6 +28,14 @@ class FireBaseController{
       print("Silme başarılı");
     } catch (e) {
       print("Silme hatası: $e");
+      Fluttertoast.showToast(
+          msg: UITextHelper.deleteFailedError,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
     }
   }
   static void addFavoriteController(String textKey, String textValue) {
