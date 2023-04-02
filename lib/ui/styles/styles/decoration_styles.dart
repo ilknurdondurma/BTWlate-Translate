@@ -27,7 +27,7 @@ class UIDecorationStyles {
   static BoxDecoration settingsListTileContainerStyle = BoxDecoration(
     color: UIColorsHelper.lightBackground,
     borderRadius: BorderRadius.circular(UISizeHelper.listTileRadius),
-    border: Border.all(strokeAlign:1,color: UIColorsHelper.lightListTileBorderColor, width: 0.25 )
+    border: Border.all(strokeAlign:StrokeAlign.outside,color: UIColorsHelper.lightListTileBorderColor, width: 0.25 )
 
   );
 

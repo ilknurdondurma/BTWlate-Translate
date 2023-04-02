@@ -19,6 +19,9 @@ import '../ui/styles/myWidgets/my_General_Widget.dart';
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {
   final String? name; //Sign google name surname
+
+  InBoxIconsController inBoxIconsController = InBoxIconsController();
+
   TranslatePage({super.key, this.name});
   String initialLang1 = "tr";
   String initialLang2 = "en";
@@ -40,7 +43,7 @@ class _TranslatePageState extends State<TranslatePage> {
   }
 
   final TextEditingController _textEditingController=TextEditingController();
-  final responseTranslateController=Get.put(TransalateButtonController());
+  final responseTranslateController=Get.put(TranslateButtonController());
   final scaffoldkey = GlobalKey<ScaffoldState>();
 
 
@@ -151,12 +154,12 @@ class _TranslatePageState extends State<TranslatePage> {
                                 icon: Icons.favorite_border,
                                 color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TransalateButtonController.responseTranslate.value)),
-                            const MyIconButtonWidget(
+                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TranslateButtonController.responseTranslate.value)),
+                            MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
                                 color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: InBoxIconsController.voiceControllerInput),
+                                onPressed: () => widget.inBoxIconsController.voiceControllerInput(widget.initialLang1,_textEditingController.text)),
                           ],
                         )
                       ],
@@ -171,7 +174,7 @@ class _TranslatePageState extends State<TranslatePage> {
                 //transalte button
                 GestureDetector(
                   onTap: ()async{
-                    await TransalateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
+                    await TranslateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
                   },
                   child: MyContainerButton(
                     dynamicwidth: UISizeHelper.translateButtonWidth,
@@ -185,10 +188,6 @@ class _TranslatePageState extends State<TranslatePage> {
                         const Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
                       ],
                     ),
-
-
-
-
                   ),
                 ),
                 //seperator t1-t2
@@ -216,17 +215,18 @@ class _TranslatePageState extends State<TranslatePage> {
                               icon: Icons.copy,
                               color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: ()=>InBoxIconsController.copyController(TransalateButtonController.responseTranslate.value,context)),
-                          const MyIconButtonWidget(
+                              onPressed: () => InBoxIconsController.copyController(TranslateButtonController.responseTranslate.value,context)),
+                          MyIconButtonWidget(
                               icon: Icons.volume_up_outlined,
                               color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: InBoxIconsController.voiceControllerOutput),
+                              onPressed: () => widget.inBoxIconsController.voiceControllerOutput(widget.initialLang2, TranslateButtonController.responseTranslate.value)),
                         ],),
                         const SizedBox(height: 15,),
                         Obx(()=>SelectableText(
+                          key: const GlobalObjectKey('outputText'),
                           maxLines: null,
-                          TransalateButtonController.responseTranslate.value,
+                          TranslateButtonController.responseTranslate.value,
                           textAlign: TextAlign.start,
                           style: UITextStyles.translatePageResponseTextStyle,
                         ),

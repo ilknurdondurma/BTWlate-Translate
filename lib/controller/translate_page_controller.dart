@@ -9,11 +9,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 //**************** INPUT LANG POPUP ********************************************
 class InputLangController extends StatefulWidget {
   final Function(String) onSelected;
-
   const InputLangController({super.key, required this.onSelected});
 
   static List<PopupMenuEntry<String>> menuEntriesInput = [
@@ -56,6 +56,13 @@ class InputLangController extends StatefulWidget {
 }
 
 class _InputLangControllerState extends State<InputLangController> {
+
+
+  @override
+  void initState() {
+
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
@@ -136,7 +143,7 @@ class _OutputLangControllerState extends State<OutputLangController> {
 }
 
 //****************** TRANSALTE BUTTON ******************************************
-class TransalateButtonController extends GetxController {
+class TranslateButtonController extends GetxController {
   static RxString responseTranslate = "".obs;
 
   static Future<String> translateButtonController(
@@ -175,6 +182,8 @@ class TransalateButtonController extends GetxController {
 class InBoxIconsController {
 // like işlemi firebase.dart dosyasında
 
+  final FlutterTts tts = FlutterTts();
+
 
   static copyController(String text, context) {
     print("copyControllerInput cagrıldı");
@@ -192,13 +201,23 @@ class InBoxIconsController {
           });
     }
   }
+  Future<void> speak(String selectedLanguage, String text) async {
+    await tts.setLanguage("$selectedLanguage-${selectedLanguage.toUpperCase()}");
 
-  static void voiceControllerInput() {
-    print("voiceControllerInput cagrıldı");
+    await tts.setPitch(1);
+    await tts.setSpeechRate(0.6);
+
+    await tts.speak(text);
   }
 
-  static void voiceControllerOutput() {
+  void voiceControllerInput(selectedLanguage, text) async {
+    print("voiceControllerInput cagrıldı");
+    speak(selectedLanguage, text);
+  }
+
+  void voiceControllerOutput(selectedLanguage, text) {
     print("voiceControllerOutput cagrıldı");
+    speak(selectedLanguage, text);
   }
 }
 
