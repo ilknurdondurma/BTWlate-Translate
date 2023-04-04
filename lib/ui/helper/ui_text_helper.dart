@@ -8,10 +8,6 @@ class UITextHelper {
   static const String signInGoogle = "Sign in with Google";
   static const String signInFacebook = "Sign in with Facebook";
   static const String signInEmail = "Sign in with Email";
-
-
-
-
   static const String privacyPolicy ="By proceeding you also agree to the Terms of Service and Privacy Policy";
 
   // translate Page
@@ -19,8 +15,6 @@ class UITextHelper {
   static const String hintText="Enter Someting";
   static const String copyText="copy success";
   static const String likeText="favorite success";
-
-
 
   // drawer Items
   static const String favorites = "Favorites";
@@ -30,11 +24,17 @@ class UITextHelper {
   static const String favoritesHeader = "Favorites";
   static const String settingsHeader = "Settings";
 
-
   //settingsPage
   static const String changeAccount = "Change Accounts";
   static const String theme = "Theme";
   static const String deleteAccount = "Delete Account";
+
+  // emailSignPage
+  static const String fieldEmail = "example@btwlate.com";
+  static const String fieldPassword = "password";
+  static const String signEmailHeader="Sign Up with Email";
+
+
 
   //splash Page
   static const String btwlate = "BtwLate";

@@ -3,7 +3,7 @@ class UISizeHelper{
   // header sizes
   static const double headerBottomLeftCircular = 100;
   static const double headerBottomRightCircular = 100;
-  static const double headerVisibleHeight = 0.30;//0.30
+  static const double headerVisibleHeight = 0.30;
 
 
   // small headers sizes (ustteki gri olan yer)
@@ -14,7 +14,9 @@ class UISizeHelper{
   static const double smallHeaderHeight = 0.12;//0.13
   static const double smallHeaderWidth = 0.90;
   static const double smallHeaderHeightLogin = 0.12;// login için
-  static const double containerLogin = 0.70;// login için
+  static const double loginContainerHeight = 0.70;// login için
+  static const double loginContainerWidth = 0.92;// login için
+
 
 
 
@@ -36,6 +38,8 @@ class UISizeHelper{
   static const double loginButtonsWidth = 0.88;
   static const double loginButtonsPadding = 15;
 
+  // email sign page size
+  static const double myFieldRadius=25;
   // drawer sizes
   static const double drawerAvatarRadius = 40;
 

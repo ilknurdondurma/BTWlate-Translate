@@ -87,7 +87,7 @@ class FacebookSign {
         await user!.reauthenticateWithCredential(facebookAuthCredential);
         await FirebaseAuth.instance.signOut();
         await Get.offAll(LoginPage());
-        print('Facebook account has been deleted successfully');
+        print('Facebook account has been logout successfully');
       } catch (e) {
         print('Error deleting Facebook account: $e');
       }

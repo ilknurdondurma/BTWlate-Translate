@@ -1,3 +1,4 @@
+import 'package:btwlate/auth/email_sign.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -22,7 +23,7 @@ class LogOutUser{
             await FacebookSign.logOutFacebook();
             print("facebooktan cıkıs yapıldı");
           } else if (userInfo.providerId == EmailAuthProvider.PROVIDER_ID) {
-            await FacebookSign.logOutFacebook();
+            await EmailSign.logOutEmailAccount();
             print("emailden cıkıs yapıldı");
           }
         }

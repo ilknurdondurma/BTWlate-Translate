@@ -59,7 +59,7 @@ class _TranslatePageState extends State<TranslatePage> {
             child: Column(
               children: [
                 //generalHeader
-                GeneralThemeWidgetStyle(
+                MyGeneralWidget(
                   iconChild: const Icon(Icons.menu),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
                   headerIconFunc: ()=>MenuIconController.menuIconController(scaffoldkey),

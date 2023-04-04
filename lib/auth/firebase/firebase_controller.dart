@@ -63,7 +63,13 @@ class FireBaseController{
         .doc(auth.currentUser?.email)
         .update({field.split('   :   ')[0]: FieldValue.delete()});
   }
-
+  static Future<bool> checkIfUserExists(String email) async {
+    final result = await FirebaseFirestore.instance
+        .collection('users')
+        .where('email', isEqualTo: email)
+        .get();
+    return result.docs.isNotEmpty;
+  }
 }
 
 

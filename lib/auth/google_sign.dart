@@ -84,7 +84,7 @@ class GoogleSign {
   static void logOutGoogleAccount()async{
     final GoogleSignIn googleSignIn = GoogleSignIn();
     await googleSignIn.signOut().then((value) => {
-      print("logout basarili"),
+      print("google logout basarili"),
       Get.offAll(const LoginPage())
     }).catchError((onError){
       print("logout basarısız");

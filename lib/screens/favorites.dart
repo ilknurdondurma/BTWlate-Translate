@@ -32,7 +32,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            GeneralThemeWidgetStyle(
+            MyGeneralWidget(
               iconChild: const Icon(Icons.arrow_back_ios),
               headerIconFunc: () =>
                   Get.back(),

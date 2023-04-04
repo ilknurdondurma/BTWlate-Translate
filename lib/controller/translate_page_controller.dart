@@ -5,11 +5,12 @@ import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+
+import '../ui/styles/myWidgets/my_spinkit_Widget.dart';
 
 //**************** INPUT LANG POPUP ********************************************
 class InputLangController extends StatefulWidget {
@@ -155,13 +156,7 @@ class TranslateButtonController extends GetxController {
     final translator = GoogleTranslator();
     // Show CircularProgressIndicator
     Get.dialog(
-      Center(
-        child: SpinKitWanderingCubes(
-          color: Colors.white,
-          size: 150,
-          duration: Duration(milliseconds: 250),
-        ),
-      ),
+      MySpinkit(),
     );
     String translatedText = await translator
         .translate(word, from: language1, to: language2)
@@ -171,12 +166,13 @@ class TranslateButtonController extends GetxController {
       return responseTranslate.value;
     });
     // Wait for 0.5 seconds
-    await Future.delayed(Duration(milliseconds: 500));
+    //await Future.delayed(Duration(milliseconds: 500));
     // Hide CircularProgressIndicator
     Get.back();
     return translatedText;
   }
 }
+
 
 //****************** İN BOX ICONS **********************************************
 class InBoxIconsController {
