@@ -34,7 +34,7 @@ class _TranslatePageState extends State<TranslatePage> {
     if (FirebaseAuth.instance.currentUser == null){
       print("kullanici yok oyuzden logine yonlendirildi !");
       GoogleSign.logOutGoogleAccount();
-      Get.offAll(LoginPage());
+      Get.offAll(const LoginPage());
     }
     widget.name;
   }
@@ -152,11 +152,11 @@ class _TranslatePageState extends State<TranslatePage> {
                                 color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TransalateButtonController.responseTranslate.value)),
-                            const MyIconButtonWidget(
+                             MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
                                 color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: InBoxIconsController.voiceControllerInput),
+                                onPressed:()=>InBoxIconsController.voiceControllerInput(widget.initialLang1,_textEditingController.text)),
                           ],
                         )
                       ],
@@ -172,6 +172,7 @@ class _TranslatePageState extends State<TranslatePage> {
                 GestureDetector(
                   onTap: ()async{
                     await TransalateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
+                    print(FirebaseAuth.instance.currentUser?.email);
                     },
                   child: MyContainerWidget(
                     dynamicwidth: UISizeHelper.translateButtonWidth,
@@ -217,13 +218,15 @@ class _TranslatePageState extends State<TranslatePage> {
                               color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
                               onPressed: ()=>InBoxIconsController.copyController(TransalateButtonController.responseTranslate.value,context)),
-                          const MyIconButtonWidget(
+                           MyIconButtonWidget(
                               icon: Icons.volume_up_outlined,
                               color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: InBoxIconsController.voiceControllerOutput),
-                        ],),
-                        const SizedBox(height: 15,),
+                              onPressed:(){
+                                InBoxIconsController.voiceControllerOutput(widget.initialLang2,TransalateButtonController.responseTranslate.value);
+                              }
+                          ),
+                        const SizedBox(height: 15,),],),
                         Obx(()=>SelectableText(
                           maxLines: null,
                           TransalateButtonController.responseTranslate.value,
@@ -232,8 +235,8 @@ class _TranslatePageState extends State<TranslatePage> {
                         ),
                         ),
                       ],
-                    ),
                   ),
+                ),
                 ),
               ],
             ),

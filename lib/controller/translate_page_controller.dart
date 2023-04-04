@@ -5,6 +5,7 @@ import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
@@ -171,30 +172,41 @@ class TransalateButtonController extends GetxController {
 class InBoxIconsController {
 // like işlemi firebase.dart dosyasında
 
-
   static copyController(String text, context) {
     print("copyControllerInput cagrıldı");
     if (text.isEmpty) {
       print("bos");
     } else {
       Clipboard.setData(ClipboardData(text: text)).then((value) => {
-            Fluttertoast.showToast(
-                msg: UITextHelper.copyText,
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                backgroundColor: Colors.grey,
-                textColor: Colors.white,
-                fontSize: 16.0)
-          });
+        Fluttertoast.showToast(
+            msg: UITextHelper.copyText,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.grey,
+            textColor: Colors.white,
+            fontSize: 16.0)
+      });
     }
   }
+  static Future<void> speak(String selectedLanguage, String text) async {
 
-  static void voiceControllerInput() {
-    print("voiceControllerInput cagrıldı");
+    final FlutterTts tts = FlutterTts();
+    await tts.setLanguage("$selectedLanguage-${selectedLanguage.toUpperCase()}");
+
+    await tts.setPitch(1);
+    await tts.setSpeechRate(0.6);
+
+    await tts.speak(text);
   }
 
-  static void voiceControllerOutput() {
+  static void voiceControllerInput(selectedLanguage, text)async  {
+    print("voiceControllerInput cagrıldı");
+    speak(selectedLanguage, text);
+  }
+
+ static void voiceControllerOutput(selectedLanguage, text) {
     print("voiceControllerOutput cagrıldı");
+    speak(selectedLanguage, text);
   }
 }
 
