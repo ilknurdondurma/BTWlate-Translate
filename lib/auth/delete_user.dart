@@ -1,3 +1,4 @@
+import 'package:btwlate/auth/email_sign.dart';
 import 'package:btwlate/auth/facebook_sign.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class DeleteAccount{
           } else if (userInfo.providerId == FacebookAuthProvider.PROVIDER_ID) {
             await FacebookSign.deleteFacebookAccount();
           } else if (userInfo.providerId == EmailAuthProvider.PROVIDER_ID) {
-            await FacebookSign.deleteFacebookAccount();
+            await EmailSign.deleteEmailAccount();
           }
         }
         return;

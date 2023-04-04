@@ -56,7 +56,7 @@ class _TranslatePageState extends State<TranslatePage> {
             child: Column(
               children: [
                 //generalHeader
-                GeneralThemeWidgetStyle(
+                MyGeneralWidget(
                   iconChild: const Icon(Icons.menu),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
                   headerIconFunc: ()=>MenuIconController.menuIconController(scaffoldkey),
@@ -172,8 +172,8 @@ class _TranslatePageState extends State<TranslatePage> {
                 GestureDetector(
                   onTap: ()async{
                     await TransalateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
-                  },
-                  child: MyContainerButton(
+                    },
+                  child: MyContainerWidget(
                     dynamicwidth: UISizeHelper.translateButtonWidth,
                     dynamicheight: UISizeHelper.translateButtonHeight,
                     decoration: UIDecorationStyles.translateButtonContainerStyle,

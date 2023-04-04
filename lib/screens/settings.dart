@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import '../ui/helper/ui_text_helper.dart';
 import '../ui/styles/myWidgets/my_General_Widget.dart';
 import '../ui/styles/myWidgets/my_ListTile_Widget.dart';
+import '../ui/styles/myWidgets/my_spinkit_Widget.dart';
 import '../ui/styles/styles/text_styles.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: SingleChildScrollView(
           child: Column(
             children: [
-              GeneralThemeWidgetStyle(
+              MyGeneralWidget(
                   iconChild: const Icon(Icons.arrow_back_ios),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
                   headerIconFunc: ()=>Get.back(),
@@ -42,6 +43,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     size: UISizeHelper.inBoxIconsSize,
                     onPressed: ()async{
                       print("change account");
+                      Get.dialog(
+                        const MySpinkit(),
+                      );
                       await LogOutUser.logOutUser();
                       Get.to(()=>const LoginPage());
                       },
@@ -94,6 +98,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                   ],
                                 ),
                               onTap: ()async {
+
                                  await DeleteAccount.deleteUser();
                                   print("settingste silmeye basildi");
                               },
