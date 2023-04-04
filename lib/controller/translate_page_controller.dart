@@ -5,6 +5,7 @@ import 'package:btwlate/ui/helper/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/ui_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
@@ -187,14 +188,14 @@ class InBoxIconsController {
       print("bos");
     } else {
       Clipboard.setData(ClipboardData(text: text)).then((value) => {
-            Fluttertoast.showToast(
-                msg: UITextHelper.copyText,
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                backgroundColor: Colors.grey,
-                textColor: Colors.white,
-                fontSize: 16.0)
-          });
+        Fluttertoast.showToast(
+            msg: UITextHelper.copyText,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.grey,
+            textColor: Colors.white,
+            fontSize: 16.0)
+      });
     }
   }
   Future<void> speak(String selectedLanguage, String text) async {
