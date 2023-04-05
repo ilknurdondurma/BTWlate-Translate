@@ -7,8 +7,10 @@ import 'package:btwlate/ui/styles/myWidgets/my_General_Widget.dart';
 import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../auth/google_sign.dart';
 import '../ui/helper/ui_colors_helper.dart';
+import 'email_sign.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -27,14 +29,15 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            GeneralThemeWidgetStyle(
+            MyGeneralWidget(
                 iconChild: const Icon(Icons.add,color: UIColorsHelper.lightHeaderBackground,),
                 height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeightLogin),
                 headerIconFunc:()=>null,
                 child: Text(UITextHelper.signIn,style: UITextStyles.pagesHeaderStyle),
             ),
             Container(
-              height: UISpaceHelper.dynamicHeight(context, UISizeHelper.containerLogin),
+              width:  UISpaceHelper.dynamicWidth(context,UISizeHelper.loginContainerWidth),
+              height: UISpaceHelper.dynamicHeight(context, UISizeHelper.loginContainerHeight),
               decoration: UIDecorationStyles.smallHeaderContainerStyle,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -45,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                   //buttons
                   GestureDetector(
                     onTap:()=>GoogleSign.logInWithGoogle(),
-                    child: MyContainerButton(
+                    child: MyContainerWidget(
                         dynamicwidth: UISizeHelper.loginButtonsWidth,
                         dynamicheight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
@@ -65,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.01)),
                   GestureDetector(
                     onTap: ()=>FacebookSign.signUpWithFacebook(),
-                    child: MyContainerButton(
+                    child: MyContainerWidget(
                         dynamicwidth: UISizeHelper.loginButtonsWidth,
                         dynamicheight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
@@ -83,21 +86,24 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.01)),
-                  MyContainerButton(
-                      dynamicwidth: UISizeHelper.loginButtonsWidth,
-                      dynamicheight: UISizeHelper.loginButtonsHeight,
-                      decoration: UIDecorationStyles.loginPageButtonsStyles,
-                      padding: UISizeHelper.loginButtonsPadding,
-                      children: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
-                          SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                          Text(UITextHelper.signInEmail,style: UITextStyles.loginButtonsStyle),
-                          SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                  GestureDetector(
+                    onTap: ()=>Get.to(()=>EmailSignPage()),
+                    child: MyContainerWidget(
+                        dynamicwidth: UISizeHelper.loginButtonsWidth,
+                        dynamicheight: UISizeHelper.loginButtonsHeight,
+                        decoration: UIDecorationStyles.loginPageButtonsStyles,
+                        padding: UISizeHelper.loginButtonsPadding,
+                        children: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
+                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                            Text(UITextHelper.signInEmail,style: UITextStyles.loginButtonsStyle),
+                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
 
-                        ],
-                      )
+                          ],
+                        )
+                    ),
                   ),
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.20)),
                   Padding(

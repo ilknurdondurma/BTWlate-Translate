@@ -1,7 +1,7 @@
 import 'package:btwlate/ui/helper/ui_space_helper.dart';
 import 'package:flutter/material.dart';
 
-class MyContainerButton extends StatelessWidget {
+class MyContainerWidget extends StatelessWidget {
   final double dynamicwidth;
   final double dynamicheight;
   final Decoration decoration;
@@ -9,7 +9,7 @@ class MyContainerButton extends StatelessWidget {
   final Widget children;
 
 
-  const MyContainerButton({
+  const MyContainerWidget({
     super.key,
     required this.dynamicwidth,
     required this.dynamicheight,

@@ -2,7 +2,6 @@ import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/screens/translate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
     User? user = _auth.currentUser;
     if (user != null) {
       return MaterialApp(
-        home: TranslatePage(name: user.displayName), // google ile giris yaplmişsa onceden
+        home: TranslatePage(name: user.displayName??user.email.toString()), // google ile giris yaplmişsa onceden
       );
     } else {
       return const MaterialApp(
