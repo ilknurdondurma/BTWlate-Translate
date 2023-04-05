@@ -134,8 +134,6 @@ class _TranslatePageState extends State<TranslatePage> {
                           ],
 
 
-
-
                         ),
                         // textfield
                         TextField(
