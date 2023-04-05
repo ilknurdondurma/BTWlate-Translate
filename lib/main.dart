@@ -17,6 +17,7 @@ Future <void> main() async{
 }
 
 class MyApp extends StatelessWidget {
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   MyApp({super.key});

@@ -19,10 +19,8 @@ import '../ui/styles/myWidgets/my_General_Widget.dart';
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {
   final String? name; //Sign google name surname
-
-  InBoxIconsController inBoxIconsController = InBoxIconsController();
-
-  TranslatePage({super.key, this.name});
+  final String? photo;
+  TranslatePage({super.key, this.name,this.photo});
   String initialLang1 = "tr";
   String initialLang2 = "en";
 
@@ -43,7 +41,7 @@ class _TranslatePageState extends State<TranslatePage> {
   }
 
   final TextEditingController _textEditingController=TextEditingController();
-  final responseTranslateController=Get.put(TranslateButtonController());
+  final responseTranslateController=Get.put(TransalateButtonController());
   final scaffoldkey = GlobalKey<ScaffoldState>();
 
 
@@ -134,6 +132,8 @@ class _TranslatePageState extends State<TranslatePage> {
                           ],
 
 
+
+
                         ),
                         // textfield
                         TextField(
@@ -155,12 +155,12 @@ class _TranslatePageState extends State<TranslatePage> {
                                 icon: Icons.favorite_border,
                                 color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TranslateButtonController.responseTranslate.value)),
-                            MyIconButtonWidget(
+                                onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TransalateButtonController.responseTranslate.value)),
+                             MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
                                 color: UIColorsHelper.lightBodyIconColor,
                                 size: UISizeHelper.inBoxIconsSize,
-                                onPressed: () => widget.inBoxIconsController.voiceControllerInput(widget.initialLang1,_textEditingController.text)),
+                                onPressed:()=>InBoxIconsController.voiceControllerInput(widget.initialLang1,_textEditingController.text)),
                           ],
                         )
                       ],
@@ -175,9 +175,10 @@ class _TranslatePageState extends State<TranslatePage> {
                 //transalte button
                 GestureDetector(
                   onTap: ()async{
-                    await TranslateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
-                  },
-                  child: MyContainerButton(
+                    await TransalateButtonController.translateButtonController(_textEditingController.text,widget.initialLang1, widget.initialLang2);
+                    print(FirebaseAuth.instance.currentUser?.email);
+                    },
+                  child: MyContainerWidget(
                     dynamicwidth: UISizeHelper.translateButtonWidth,
                     dynamicheight: UISizeHelper.translateButtonHeight,
                     decoration: UIDecorationStyles.translateButtonContainerStyle,
@@ -189,6 +190,10 @@ class _TranslatePageState extends State<TranslatePage> {
                         const Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
                       ],
                     ),
+
+
+
+
                   ),
                 ),
                 //seperator t1-t2
@@ -216,18 +221,19 @@ class _TranslatePageState extends State<TranslatePage> {
                               icon: Icons.copy,
                               color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: () => InBoxIconsController.copyController(TranslateButtonController.responseTranslate.value,context)),
-                          MyIconButtonWidget(
+                              onPressed: ()=>InBoxIconsController.copyController(TransalateButtonController.responseTranslate.value,context)),
+                           MyIconButtonWidget(
                               icon: Icons.volume_up_outlined,
                               color: UIColorsHelper.lightBodyIconColor,
                               size: UISizeHelper.inBoxIconsSize,
-                              onPressed: () => widget.inBoxIconsController.voiceControllerOutput(widget.initialLang2, TranslateButtonController.responseTranslate.value)),
-                        ],),
-                        const SizedBox(height: 15,),
+                              onPressed:(){
+                                InBoxIconsController.voiceControllerOutput(widget.initialLang2,TransalateButtonController.responseTranslate.value);
+                              }
+                          ),
+                        const SizedBox(height: 15,),],),
                         Obx(()=>SelectableText(
-                          key: const GlobalObjectKey('outputText'),
                           maxLines: null,
-                          TranslateButtonController.responseTranslate.value,
+                          TransalateButtonController.responseTranslate.value,
                           textAlign: TextAlign.start,
                           style: UITextStyles.translatePageResponseTextStyle,
                         ),
