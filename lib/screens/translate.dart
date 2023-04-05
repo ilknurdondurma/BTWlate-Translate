@@ -19,7 +19,8 @@ import '../ui/styles/myWidgets/my_General_Widget.dart';
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {
   final String? name; //Sign google name surname
-  TranslatePage({super.key, this.name});
+  final String? photo;
+  TranslatePage({super.key, this.name,this.photo});
   String initialLang1 = "tr";
   String initialLang2 = "en";
 
@@ -245,7 +246,7 @@ class _TranslatePageState extends State<TranslatePage> {
             ),
           ),
         ),
-        drawer: DrawerWidget(name:widget.name!),
+        drawer: DrawerWidget(name:widget.name!,photo:widget.photo!),
       ),
     );
   }
