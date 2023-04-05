@@ -131,6 +131,9 @@ class _TranslatePageState extends State<TranslatePage> {
                                 onPressed: ()=>_textEditingController.clear()),
                           ],
 
+
+
+
                         ),
                         // textfield
                         TextField(
