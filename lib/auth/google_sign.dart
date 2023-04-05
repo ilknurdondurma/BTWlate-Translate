@@ -31,7 +31,7 @@ class GoogleSign {
     print("google ile giris");
     UserCredential? userCredential = await GoogleSign.signInWithGoogle();
     if (userCredential != null && userCredential.user != null) {
-      Get.offAll(TranslatePage(name: userCredential.user?.displayName,));
+      Get.offAll(TranslatePage(name: userCredential.user?.displayName,photo: userCredential.user?.photoURL,));
     } else {
       print("Kullanıcı giriş yapmadı.");
       Fluttertoast.showToast(

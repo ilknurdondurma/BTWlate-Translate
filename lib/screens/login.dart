@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             const Icon(Icons.g_mobiledata_outlined,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                            Text(UITextHelper.signInGoogle,style: UITextStyles.loginButtonsStyle),
+                            Text(UITextHelper.signInGoogle,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center,),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
 
                           ],
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             const Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                            Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle),
+                            Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
 
                           ],
@@ -93,15 +93,17 @@ class _LoginPageState extends State<LoginPage> {
                         dynamicheight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
                         padding: UISizeHelper.loginButtonsPadding,
-                        children: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
-                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                            Text(UITextHelper.signInEmail,style: UITextStyles.loginButtonsStyle),
-                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                        children: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
+                              SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                              Text(UITextHelper.signInEmail,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
+                              SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
 
-                          ],
+                            ],
+                          ),
                         )
                     ),
                   ),

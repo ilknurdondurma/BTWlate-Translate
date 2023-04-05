@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
     User? user = _auth.currentUser;
     if (user != null) {
       return MaterialApp(
-        home: TranslatePage(name: user.displayName??user.email.toString()), // google ile giris yaplmişsa onceden
+        home: TranslatePage(
+          name: user.displayName??user.email.toString(),
+          photo: user.photoURL??"https://yt3.ggpht.com/ytc/AKedOLS5ajMs0W8nbRxMvKohv2vA1K7bjjhMjvvryNV9dg=s900-c-k-c0x00ffffff-no-rj",), // google ile giris yaplmişsa onceden
       );
     } else {
       return const MaterialApp(

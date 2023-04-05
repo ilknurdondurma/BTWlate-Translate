@@ -18,7 +18,7 @@ class EmailSign{
           email: email,
           password: password,
         );
-        Get.offAll(TranslatePage(name: userCredential.user?.email ?? ""));
+        Get.offAll(TranslatePage(name: userCredential.user?.email ?? "",photo: userCredential.user?.photoURL,));
         FireBaseController.addUserController();
         return userCredential;
       } on FirebaseAuthException catch (e) {
@@ -32,7 +32,7 @@ class EmailSign{
               password: password,
             ).then((value) => { MySpinkit()});
             // başarılı giriş
-            Get.offAll(TranslatePage(name:FirebaseAuth.instance.currentUser?.email));
+            Get.offAll(TranslatePage(name:FirebaseAuth.instance.currentUser?.email,photo: FirebaseAuth.instance.currentUser?.photoURL,));
           } catch (error) {
             // hata durumunda kullanıcıya bildirim göster
 

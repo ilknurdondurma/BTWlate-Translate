@@ -242,7 +242,7 @@ class _TranslatePageState extends State<TranslatePage> {
             ),
           ),
         ),
-        drawer: DrawerWidget(name:widget.name!),
+        drawer: DrawerWidget(name:widget.name!,photo:widget.photo!),
       ),
     );
   }

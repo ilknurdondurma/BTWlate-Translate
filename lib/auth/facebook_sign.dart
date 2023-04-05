@@ -25,7 +25,7 @@ class FacebookSign {
         final User? user = userCredential.user;
 
         if (user != null) {
-          Get.offAll(TranslatePage(name: firebaseAuth.currentUser?.displayName,));
+          Get.offAll(TranslatePage(name: firebaseAuth.currentUser?.displayName,photo: firebaseAuth.currentUser?.photoURL,));
           FireBaseController.addUserController();
 
           return userCredential;
@@ -60,9 +60,10 @@ class FacebookSign {
         final facebookAuthCredential =
         FacebookAuthProvider.credential(accessToken!.token);
         await user!.reauthenticateWithCredential(facebookAuthCredential);
+        await FireBaseController.deleteUserController();
         await user.delete();
         await Get.offAll(LoginPage());
-        await FireBaseController.deleteUserController();
+
         print('Facebook account has been deleted successfully');
       } catch (e) {
         print('Error deleting Facebook account: $e');
