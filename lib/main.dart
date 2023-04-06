@@ -11,8 +11,8 @@ Future <void> main() async{
   await Firebase.initializeApp();
   await GetStorage.init();
   runApp( GetMaterialApp(
-    debugShowCheckedModeBanner: false,
     home: MyApp(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 

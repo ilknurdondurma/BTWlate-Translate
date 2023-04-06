@@ -1,7 +1,7 @@
 import 'package:btwlate/auth/facebook_sign.dart';
-import 'package:btwlate/ui/helper/ui_size_helper.dart';
-import 'package:btwlate/ui/helper/ui_space_helper.dart';
-import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_space_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/my_Container_Widget.dart';
 import 'package:btwlate/ui/styles/myWidgets/my_General_Widget.dart';
 import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
@@ -9,7 +9,7 @@ import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../auth/google_sign.dart';
-import '../ui/helper/ui_colors_helper.dart';
+import '../ui/helper/constants/ui_colors_helper.dart';
 import 'email_sign.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,12 +25,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: UIColorsHelper.lightBackground,
+      backgroundColor: UIColorsHelper.scaffoldBackground,
       body: SingleChildScrollView(
         child: Column(
           children: [
             MyGeneralWidget(
-                iconChild: const Icon(Icons.add,color: UIColorsHelper.lightHeaderBackground,),
+                iconChild:  Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.add,color: UIColorsHelper.headerBackground,),
+                  ],
+                ),
                 height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeightLogin),
                 headerIconFunc:()=>null,
                 child: Text(UITextHelper.signIn,style: UITextStyles.pagesHeaderStyle),
@@ -56,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                         children: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Icon(Icons.g_mobiledata_outlined,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
+                            Icon(Icons.g_mobiledata_outlined,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
                             Text(UITextHelper.signInGoogle,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center,),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
@@ -76,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                         children: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
+                            Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
                             Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
                             SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
@@ -97,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              const Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.lightLoginPageButtonsIconColor,),
+                              Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
                               SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
                               Text(UITextHelper.signInEmail,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
                               SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),

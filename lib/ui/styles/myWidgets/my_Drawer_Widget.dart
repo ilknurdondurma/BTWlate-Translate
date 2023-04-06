@@ -1,7 +1,7 @@
 import 'package:btwlate/screens/settings.dart';
-import 'package:btwlate/ui/helper/ui_colors_helper.dart';
-import 'package:btwlate/ui/helper/ui_size_helper.dart';
-import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/my_Textfield_Widet.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../screens/favorites.dart';
+import '../../helper/constants/ui_space_helper.dart';
 import 'my_Icon_Button_Widget.dart';
 
 
@@ -25,28 +26,21 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: UIColorsHelper.drawerBodyBackground,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            decoration: const BoxDecoration(color: UIColorsHelper.lightDrawerHeader),
+            decoration:  BoxDecoration(color: UIColorsHelper.drawerHeaderBackground),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.02)),
                   CircleAvatar(backgroundImage: NetworkImage(photo),radius: UISizeHelper.drawerAvatarRadius,),
+                  SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.02)),
                   Text(name,style: UITextStyles.drawerHeaderTextStyle),
-                  Row(
-                    children: [
-                      Text("@${name}",style: UITextStyles.drawerHeaderTextStyle),
-                       MyIconButtonWidget(
-                           icon: Icons.edit,
-                          color: UIColorsHelper.lightBodyIconColor,
-                          size: UISizeHelper.inBoxIconsSize,
-                          onPressed: ()=>{print("click edit nickname")})
-                    ],
-                  )
                 ],
               ),
             ),
@@ -62,48 +56,6 @@ class DrawerWidget extends StatelessWidget {
 
         ],
       ),
-    );
-  }
-  Future<dynamic> buildShowDialog(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return Opacity(
-          opacity: 0.9,
-          child: AlertDialog(
-            icon: const Icon(Icons.cloud_outlined),
-            actionsAlignment: MainAxisAlignment.start,
-            title: const Text(UITextHelper.showDialogHeader),
-            actions: <Widget>[
-              GestureDetector(
-                child: Column(
-                  children: [
-                    MyTextFieldWidget(
-                        controller: saveController,
-                        color: UIColorsHelper.lightHeaderBackground,
-                        hintText: "@nickname",
-                        fieldRadius: 25,
-                        inputType: TextInputType.,
-                        prefixIcon: prefixIcon,
-                        obsecure: obsecure),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.save),
-                        Text(UITextHelper.okShowDialog, textAlign: TextAlign.center),
-                      ],
-                    ),
-                  ],
-                ),
-                onTap: ()async {
-
-                },
-
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

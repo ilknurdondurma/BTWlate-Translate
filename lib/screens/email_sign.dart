@@ -1,9 +1,9 @@
 import 'package:btwlate/auth/email_sign.dart';
 import 'package:btwlate/controller/email_sign_page_controller.dart';
-import 'package:btwlate/ui/helper/ui_colors_helper.dart';
-import 'package:btwlate/ui/helper/ui_size_helper.dart';
-import 'package:btwlate/ui/helper/ui_space_helper.dart';
-import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_space_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/my_Container_Widget.dart';
 import 'package:btwlate/ui/styles/myWidgets/my_spinkit_Widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
@@ -27,7 +27,12 @@ class EmailSignPage extends StatelessWidget {
         child: Column(
           children: [
             MyGeneralWidget(
-              iconChild: const Icon(Icons.arrow_back_ios),
+              iconChild:  Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(Icons.arrow_back_ios),
+                ],
+              ),
               headerIconFunc: ()=>Get.back(),
               height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
               child: Text(UITextHelper.signEmailHeader,style: UITextStyles.pagesHeaderStyle,),
@@ -43,7 +48,7 @@ class EmailSignPage extends StatelessWidget {
                     SizedBox(height: UISpaceHelper.dynamicHeight(context, 0.05),),
                     MyTextFieldWidget(
                       controller: emailController,
-                      color: UIColorsHelper.lightHeaderBackground,
+                      color: UIColorsHelper.headerBackground,
                       hintText: UITextHelper.fieldEmail,
                       fieldRadius: UISizeHelper.myFieldRadius,
                       inputType: TextInputType.emailAddress,
@@ -54,7 +59,7 @@ class EmailSignPage extends StatelessWidget {
                     SizedBox(height: UISpaceHelper.dynamicHeight(context, 0.05),),
                     MyTextFieldWidget(
                       controller: passwordController,
-                      color: UIColorsHelper.lightHeaderBackground,
+                      color: UIColorsHelper.headerBackground,
                       hintText: UITextHelper.fieldPassword,
                       fieldRadius: UISizeHelper.myFieldRadius,
                       inputType: TextInputType.visiblePassword,

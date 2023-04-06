@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../ui/helper/ui_text_helper.dart';
+import '../ui/helper/constants/ui_text_helper.dart';
 import 'google_sign.dart';
 
 class DeleteAccount{

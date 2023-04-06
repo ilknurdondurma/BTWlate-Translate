@@ -1,17 +1,17 @@
 import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/auth/google_sign.dart';
 import 'package:btwlate/screens/login.dart';
-import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
 import 'package:btwlate/ui/styles/myWidgets/my_Icon_Button_Widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:btwlate/ui/helper/ui_size_helper.dart';
-import 'package:btwlate/ui/helper/ui_space_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_space_helper.dart';
 import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:get/get.dart';
 import '../controller/translate_page_controller.dart';
-import '../ui/helper/ui_colors_helper.dart';
+import '../ui/helper/constants/ui_colors_helper.dart';
 import '../ui/styles/myWidgets/my_Container_Widget.dart';
 import '../ui/styles/myWidgets/my_Drawer_Widget.dart';
 import '../ui/styles/myWidgets/my_General_Widget.dart';
@@ -38,6 +38,7 @@ class _TranslatePageState extends State<TranslatePage> {
       Get.offAll(const LoginPage());
     }
     widget.name;
+
   }
 
   final TextEditingController _textEditingController=TextEditingController();
@@ -51,14 +52,34 @@ class _TranslatePageState extends State<TranslatePage> {
     return MaterialApp(
       home: Scaffold(
         key: scaffoldkey,
-        backgroundColor: UIColorsHelper.lightBackground,
+        backgroundColor: UIColorsHelper.scaffoldBackground,
         body: ScaffoldMessenger(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 //generalHeader
                 MyGeneralWidget(
-                  iconChild: const Icon(Icons.menu),
+                  iconChild: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Icon(Icons.menu),
+                      SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.38)),
+                      Expanded(
+                        child: Switch(
+                          value: UIColorsHelper.theme,
+                           onChanged:(value){
+                             setState(() {
+                               UIColorsHelper.toggleTheme();
+                               print("${UIColorsHelper.theme}");
+                             });
+
+                           },
+                          activeTrackColor: UIColorsHelper.activeTrackColor,
+                          activeColor: UIColorsHelper.activeColor,
+                         inactiveTrackColor: Colors.cyan),
+                      ),
+                    ],
+                  ),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
                   headerIconFunc: ()=>MenuIconController.menuIconController(scaffoldkey),
                   child: Row(
@@ -74,7 +95,7 @@ class _TranslatePageState extends State<TranslatePage> {
                       ),
                       MyIconButtonWidget(
                           icon: Icons.swap_horiz,
-                          color: UIColorsHelper.lightBodyIconColor,
+                          color: UIColorsHelper.inBoxIconsColor,
                           size: UISizeHelper.iconChangeLangSize,
                           onPressed: () {
                            setState(() {
@@ -121,12 +142,12 @@ class _TranslatePageState extends State<TranslatePage> {
                           children: [
                             MyIconButtonWidget(
                                 icon: Icons.copy,
-                                color: UIColorsHelper.lightBodyIconColor,
+                                color: UIColorsHelper.inBoxIconsColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: ()=>InBoxIconsController.copyController(_textEditingController.text,context)),
                             MyIconButtonWidget(
                                 icon: Icons.close,
-                                color: UIColorsHelper.lightBodyIconColor,
+                                color: UIColorsHelper.inBoxIconsColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: ()=>_textEditingController.clear()),
                           ],
@@ -153,12 +174,12 @@ class _TranslatePageState extends State<TranslatePage> {
                           children: [
                             MyIconButtonWidget(
                                 icon: Icons.favorite_border,
-                                color: UIColorsHelper.lightBodyIconColor,
+                                color: UIColorsHelper.inBoxIconsColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed: ()=>FireBaseController.addFavoriteController(_textEditingController.text,TransalateButtonController.responseTranslate.value)),
                              MyIconButtonWidget(
                                 icon: Icons.volume_up_outlined,
-                                color: UIColorsHelper.lightBodyIconColor,
+                                color: UIColorsHelper.inBoxIconsColor,
                                 size: UISizeHelper.inBoxIconsSize,
                                 onPressed:()=>InBoxIconsController.voiceControllerInput(widget.initialLang1,_textEditingController.text)),
                           ],
@@ -187,7 +208,7 @@ class _TranslatePageState extends State<TranslatePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),
-                        const Icon(Icons.send,color: UIColorsHelper.translateButtonItemColor,size: UISizeHelper.iconTranslateSize,)
+                        Icon(Icons.send,color: UIColorsHelper.circleButtonItemColor,size: UISizeHelper.iconTranslateSize,)
                       ],
                     ),
 
@@ -219,12 +240,12 @@ class _TranslatePageState extends State<TranslatePage> {
                           children: [
                           MyIconButtonWidget(
                               icon: Icons.copy,
-                              color: UIColorsHelper.lightBodyIconColor,
+                              color: UIColorsHelper.inBoxIconsColor,
                               size: UISizeHelper.inBoxIconsSize,
                               onPressed: ()=>InBoxIconsController.copyController(TransalateButtonController.responseTranslate.value,context)),
                            MyIconButtonWidget(
                               icon: Icons.volume_up_outlined,
-                              color: UIColorsHelper.lightBodyIconColor,
+                              color: UIColorsHelper.inBoxIconsColor,
                               size: UISizeHelper.inBoxIconsSize,
                               onPressed:(){
                                 InBoxIconsController.voiceControllerOutput(widget.initialLang2,TransalateButtonController.responseTranslate.value);

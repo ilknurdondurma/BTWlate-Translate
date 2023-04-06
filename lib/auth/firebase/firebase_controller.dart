@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../ui/helper/ui_text_helper.dart';
+import '../../ui/helper/constants/ui_text_helper.dart';
 
 class FireBaseController{
   static void addUserController ()async {
@@ -69,6 +69,14 @@ class FireBaseController{
         .where('email', isEqualTo: email)
         .get();
     return result.docs.isNotEmpty;
+  }
+  static Future<DocumentSnapshot>getFavoritesController()async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(auth.currentUser?.email)
+        .get();
+    return snapshot;
   }
 }
 

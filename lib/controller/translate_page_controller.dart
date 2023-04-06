@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:btwlate/ui/helper/ui_colors_helper.dart';
-import 'package:btwlate/ui/helper/ui_size_helper.dart';
-import 'package:btwlate/ui/helper/ui_text_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_colors_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
+import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -61,10 +61,10 @@ class _InputLangControllerState extends State<InputLangController> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      color: UIColorsHelper.lightPopupBackgorundColor,
+      color: UIColorsHelper.popupBackgorundColor,
       icon: Icon(
         Icons.keyboard_arrow_down_outlined,
-        color: UIColorsHelper.lightBodyIconColor,
+        color: UIColorsHelper.inBoxIconsColor,
         size: UISizeHelper.iconSelectLang1Size,
       ),
       itemBuilder: (BuildContext context) {
@@ -123,10 +123,10 @@ class _OutputLangControllerState extends State<OutputLangController> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      color: UIColorsHelper.lightPopupBackgorundColor,
+      color: UIColorsHelper.popupBackgorundColor,
       icon: Icon(
         Icons.keyboard_arrow_down_outlined,
-        color: UIColorsHelper.lightBodyIconColor,
+        color: UIColorsHelper.inBoxIconsColor,
         size: UISizeHelper.iconSelectLang2Size,
       ),
       itemBuilder: (BuildContext context) {

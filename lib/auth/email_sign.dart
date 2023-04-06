@@ -7,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../screens/login.dart';
-import '../ui/helper/ui_text_helper.dart';
+import '../ui/helper/constants/ui_text_helper.dart';
 
 class EmailSign{
 

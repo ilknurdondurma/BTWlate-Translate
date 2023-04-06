@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../helper/ui_size_helper.dart';
-import '../styles/decoration_styles.dart';
+import '../../helper/constants/ui_size_helper.dart';
 import '../styles/text_styles.dart';
 import 'my_Icon_Button_Widget.dart';
 
@@ -11,6 +10,7 @@ class MyListTileContainer extends StatelessWidget {
   final Color color;
   final double size;
   final Function() onPressed;
+  final Decoration containerDecoration;
 
 
   const MyListTileContainer({super.key,
@@ -18,13 +18,14 @@ class MyListTileContainer extends StatelessWidget {
     required this.icon,
     required this.color,
     required this.size,
-    required this.onPressed
+    required this.onPressed,
+    required this.containerDecoration,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: UIDecorationStyles.settingsListTileContainerStyle,
+      decoration: containerDecoration,
       height: UISizeHelper.listTileHeight,
       child: GestureDetector(
         onTap: ()=>onPressed(),
@@ -34,7 +35,7 @@ class MyListTileContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(text,style: UITextStyles.settingsPageStyle,),
-                MyIconButtonWidget(icon: icon, color: color, size: size, onPressed: ()=>onPressed())
+                MyIconButtonWidget(icon: icon, color: color, size: size, onPressed: ()=>onPressed()),
               ],
             ),
           ),
