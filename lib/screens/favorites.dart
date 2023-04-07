@@ -1,8 +1,8 @@
 import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_General_Widget.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_ListTile_Widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_general_widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_listtile_widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             MyGeneralWidget(
               iconChild:  Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   Icon(Icons.arrow_back_ios),
                 ],
               ),

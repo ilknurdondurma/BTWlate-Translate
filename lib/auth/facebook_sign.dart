@@ -62,7 +62,7 @@ class FacebookSign {
         await user!.reauthenticateWithCredential(facebookAuthCredential);
         await FireBaseController.deleteUserController();
         await user.delete();
-        await Get.offAll(LoginPage());
+        await Get.offAll(const LoginPage());
 
         print('Facebook account has been deleted successfully');
       } catch (e) {
@@ -87,7 +87,7 @@ class FacebookSign {
         FacebookAuthProvider.credential(accessToken!.token);
         await user!.reauthenticateWithCredential(facebookAuthCredential);
         await FirebaseAuth.instance.signOut();
-        await Get.offAll(LoginPage());
+        await Get.offAll(const LoginPage());
         print('Facebook account has been logout successfully');
       } catch (e) {
         print('Error deleting Facebook account: $e');

@@ -1,17 +1,15 @@
-import 'package:btwlate/auth/email_sign.dart';
 import 'package:btwlate/controller/email_sign_page_controller.dart';
 import 'package:btwlate/ui/helper/constants/ui_colors_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_space_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_Container_Widget.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_spinkit_Widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_container_widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../ui/styles/myWidgets/my_General_Widget.dart';
-import '../ui/styles/myWidgets/my_Textfield_Widet.dart';
+import '../ui/styles/myWidgets/my_general_widget.dart';
+import '../ui/styles/myWidgets/my_textfield_widet.dart';
 import '../ui/styles/styles/decoration_styles.dart';
 
 class EmailSignPage extends StatelessWidget {
@@ -29,7 +27,7 @@ class EmailSignPage extends StatelessWidget {
             MyGeneralWidget(
               iconChild:  Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   Icon(Icons.arrow_back_ios),
                 ],
               ),
@@ -73,8 +71,8 @@ class EmailSignPage extends StatelessWidget {
                         EmailSignPageController.signUpButton(emailController.text.toString(), passwordController.text);
                       },
                       child: MyContainerWidget(
-                        dynamicwidth: UISizeHelper.translateButtonWidth,
-                        dynamicheight: UISizeHelper.translateButtonHeight,
+                        dynamicWidth: UISizeHelper.translateButtonWidth,
+                        dynamicHeight: UISizeHelper.translateButtonHeight,
                         decoration: UIDecorationStyles.translateButtonContainerStyle,
                         padding: UISizeHelper.translateButtonPadding,
                         children: Row(

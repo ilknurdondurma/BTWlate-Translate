@@ -10,9 +10,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:translator/translator.dart';
 
-import '../ui/styles/myWidgets/my_spinkit_Widget.dart';
+import '../ui/styles/myWidgets/my_spinkit_widget.dart';
 
-import '../ui/styles/myWidgets/my_spinkit_Widget.dart';
 
 //**************** INPUT LANG POPUP ********************************************
 class InputLangController extends StatefulWidget {

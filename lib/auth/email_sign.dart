@@ -1,6 +1,6 @@
 import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/screens/translate.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_spinkit_Widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_spinkit_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,7 +30,7 @@ class EmailSign{
             await FirebaseAuth.instance.signInWithEmailAndPassword(
               email: email,
               password: password,
-            ).then((value) => { MySpinkit()});
+            ).then((value) => { const MySpinkit()});
             // başarılı giriş
             Get.offAll(TranslatePage(name:FirebaseAuth.instance.currentUser?.email,photo: FirebaseAuth.instance.currentUser?.photoURL,));
           } catch (error) {
@@ -79,8 +79,8 @@ class EmailSign{
     // Kullanıcıyı sil
     await auth.currentUser?.delete()
         .then((_) {
-          MySpinkit();
-          Get.offAll(LoginPage());
+          const MySpinkit();
+          Get.offAll(const LoginPage());
       print("Hesap silme işlemi başarılı");
     }).catchError((error) {
       print("Hesap silme işlemi başarısız: $error");

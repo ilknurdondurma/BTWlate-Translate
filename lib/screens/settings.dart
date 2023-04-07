@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../ui/helper/constants/ui_text_helper.dart';
-import '../ui/styles/myWidgets/my_General_Widget.dart';
-import '../ui/styles/myWidgets/my_ListTile_Widget.dart';
-import '../ui/styles/myWidgets/my_spinkit_Widget.dart';
+import '../ui/styles/myWidgets/my_general_widget.dart';
+import '../ui/styles/myWidgets/my_listtile_widget.dart';
+import '../ui/styles/myWidgets/my_spinkit_widget.dart';
 import '../ui/styles/styles/decoration_styles.dart';
 import '../ui/styles/styles/text_styles.dart';
 
@@ -32,7 +32,7 @@ class _SettingsPageState extends State<SettingsPage> {
               MyGeneralWidget(
                   iconChild:  Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
                       Icon(Icons.arrow_back_ios),
                     ],
                   ),

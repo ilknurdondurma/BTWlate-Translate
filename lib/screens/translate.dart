@@ -2,7 +2,7 @@ import 'package:btwlate/auth/firebase/firebase_controller.dart';
 import 'package:btwlate/auth/google_sign.dart';
 import 'package:btwlate/screens/login.dart';
 import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_Icon_Button_Widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_icon_button_widget.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +12,9 @@ import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:get/get.dart';
 import '../controller/translate_page_controller.dart';
 import '../ui/helper/constants/ui_colors_helper.dart';
-import '../ui/styles/myWidgets/my_Container_Widget.dart';
-import '../ui/styles/myWidgets/my_Drawer_Widget.dart';
-import '../ui/styles/myWidgets/my_General_Widget.dart';
+import '../ui/styles/myWidgets/my_container_widget.dart';
+import '../ui/styles/myWidgets/my_drawer_widget.dart';
+import '../ui/styles/myWidgets/my_general_widget.dart';
 
 // ignore: must_be_immutable
 class TranslatePage extends StatefulWidget {
@@ -38,7 +38,6 @@ class _TranslatePageState extends State<TranslatePage> {
       Get.offAll(const LoginPage());
     }
     widget.name;
-
   }
 
   final TextEditingController _textEditingController=TextEditingController();
@@ -60,24 +59,9 @@ class _TranslatePageState extends State<TranslatePage> {
                 //generalHeader
                 MyGeneralWidget(
                   iconChild: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
                       Icon(Icons.menu),
-                      SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.38)),
-                      Expanded(
-                        child: Switch(
-                          value: UIColorsHelper.theme,
-                           onChanged:(value){
-                             setState(() {
-                               UIColorsHelper.toggleTheme();
-                               print("${UIColorsHelper.theme}");
-                             });
-
-                           },
-                          activeTrackColor: UIColorsHelper.activeTrackColor,
-                          activeColor: UIColorsHelper.activeColor,
-                         inactiveTrackColor: Colors.cyan),
-                      ),
                     ],
                   ),
                   height: UISpaceHelper.dynamicHeight(context, UISizeHelper.smallHeaderHeight),
@@ -200,8 +184,8 @@ class _TranslatePageState extends State<TranslatePage> {
                     print(FirebaseAuth.instance.currentUser?.email);
                     },
                   child: MyContainerWidget(
-                    dynamicwidth: UISizeHelper.translateButtonWidth,
-                    dynamicheight: UISizeHelper.translateButtonHeight,
+                    dynamicWidth: UISizeHelper.translateButtonWidth,
+                    dynamicHeight: UISizeHelper.translateButtonHeight,
                     decoration: UIDecorationStyles.translateButtonContainerStyle,
                     padding: UISizeHelper.translateButtonPadding,
                     children: Row(

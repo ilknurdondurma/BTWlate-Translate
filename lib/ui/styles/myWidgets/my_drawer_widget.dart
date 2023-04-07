@@ -2,7 +2,6 @@ import 'package:btwlate/screens/settings.dart';
 import 'package:btwlate/ui/helper/constants/ui_colors_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_Textfield_Widet.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import 'package:get/get.dart';
 
 import '../../../screens/favorites.dart';
 import '../../helper/constants/ui_space_helper.dart';
-import 'my_Icon_Button_Widget.dart';
 
 
 class DrawerWidget extends StatelessWidget {

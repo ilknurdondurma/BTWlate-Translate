@@ -2,8 +2,8 @@ import 'package:btwlate/ui/helper/constants/ui_space_helper.dart';
 import 'package:flutter/material.dart';
 
 class MyContainerWidget extends StatelessWidget {
-  final double dynamicwidth;
-  final double dynamicheight;
+  final double dynamicWidth;
+  final double dynamicHeight;
   final Decoration decoration;
   final double padding;
   final Widget children;
@@ -11,8 +11,8 @@ class MyContainerWidget extends StatelessWidget {
 
   const MyContainerWidget({
     super.key,
-    required this.dynamicwidth,
-    required this.dynamicheight,
+    required this.dynamicWidth,
+    required this.dynamicHeight,
     required this.decoration,
     required this.padding,
     required this.children,
@@ -21,8 +21,8 @@ class MyContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width:UISpaceHelper.dynamicWidth(context,  dynamicwidth,),
-        height: UISpaceHelper.dynamicWidth(context,  dynamicheight,),
+        width:UISpaceHelper.dynamicWidth(context,  dynamicWidth,),
+        height: UISpaceHelper.dynamicWidth(context,  dynamicHeight,),
         decoration: decoration,
         child: Padding(
             padding: EdgeInsets.all(padding),

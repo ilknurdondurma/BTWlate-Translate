@@ -2,8 +2,8 @@ import 'package:btwlate/auth/facebook_sign.dart';
 import 'package:btwlate/ui/helper/constants/ui_size_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_space_helper.dart';
 import 'package:btwlate/ui/helper/constants/ui_text_helper.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_Container_Widget.dart';
-import 'package:btwlate/ui/styles/myWidgets/my_General_Widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_container_widget.dart';
+import 'package:btwlate/ui/styles/myWidgets/my_general_widget.dart';
 import 'package:btwlate/ui/styles/styles/decoration_styles.dart';
 import 'package:btwlate/ui/styles/styles/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -54,8 +54,8 @@ class _LoginPageState extends State<LoginPage> {
                   GestureDetector(
                     onTap:()=>GoogleSign.logInWithGoogle(),
                     child: MyContainerWidget(
-                        dynamicwidth: UISizeHelper.loginButtonsWidth,
-                        dynamicheight: UISizeHelper.loginButtonsHeight,
+                        dynamicWidth: UISizeHelper.loginButtonsWidth,
+                        dynamicHeight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
                         padding: UISizeHelper.loginButtonsPadding,
                         children: Row(
@@ -74,8 +74,8 @@ class _LoginPageState extends State<LoginPage> {
                   GestureDetector(
                     onTap: ()=>FacebookSign.signUpWithFacebook(),
                     child: MyContainerWidget(
-                        dynamicwidth: UISizeHelper.loginButtonsWidth,
-                        dynamicheight: UISizeHelper.loginButtonsHeight,
+                        dynamicWidth: UISizeHelper.loginButtonsWidth,
+                        dynamicHeight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
                         padding: UISizeHelper.loginButtonsPadding,
                         children: Row(
@@ -94,8 +94,8 @@ class _LoginPageState extends State<LoginPage> {
                   GestureDetector(
                     onTap: ()=>Get.to(()=>EmailSignPage()),
                     child: MyContainerWidget(
-                        dynamicwidth: UISizeHelper.loginButtonsWidth,
-                        dynamicheight: UISizeHelper.loginButtonsHeight,
+                        dynamicWidth: UISizeHelper.loginButtonsWidth,
+                        dynamicHeight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
                         padding: UISizeHelper.loginButtonsPadding,
                         children: Center(
