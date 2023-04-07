@@ -61,15 +61,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                   MyListTileContainer(
                     containerDecoration: UIDecorationStyles.settingsListTileContainerStyle,
-                    text: UITextHelper.theme,
-                    color: UIColorsHelper.listTileIconsColor,
-                    size: UISizeHelper.inBoxIconsSize,
-                    onPressed:(){print("theme");},
-                    icon: Icons.color_lens,
-
-                  ),
-                  MyListTileContainer(
-                    containerDecoration: UIDecorationStyles.settingsListTileContainerStyle,
                     text: UITextHelper.deleteAccount,
                     color: UIColorsHelper.listTileIconsColor,
                     size: UISizeHelper.inBoxIconsSize,

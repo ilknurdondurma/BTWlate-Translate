@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UIColorsHelper{
- static  bool theme =false;
+ static  bool theme =true;
  static void toggleTheme() {
   theme = !theme;
  }

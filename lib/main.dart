@@ -1,4 +1,5 @@
 import 'package:btwlate/screens/login.dart';
+import 'package:btwlate/screens/splash.dart';
 import 'package:btwlate/screens/translate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,7 @@ class MyApp extends StatelessWidget {
     User? user = _auth.currentUser;
     if (user != null) {
       return MaterialApp(
-        home: TranslatePage(
-          name: user.displayName??user.email.toString(),
-          photo: user.photoURL??"https://yt3.ggpht.com/ytc/AKedOLS5ajMs0W8nbRxMvKohv2vA1K7bjjhMjvvryNV9dg=s900-c-k-c0x00ffffff-no-rj",), // google ile giris yaplmişsa onceden
-      );
+        home: SplashPage());
     } else {
       return const MaterialApp(
         home: LoginPage(), // yapilmamişsa
