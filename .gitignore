@@ -50,6 +50,9 @@ app.*.map.json
 **/android/gradlew
 **/android/local.properties
 **/android/key.properties
+**/android/app/google-services.json
+**/android/app/src/main/res/values/string.xml
+**/pubspec.lock
 *.jks
 
 **/ios/Flutter/ephemeral
@@ -65,8 +68,6 @@ app.*.map.json
 **/ios/Flutter/Generated.xcconfig
 
 /bin/cache/
-**/android/app/google-services.json
-**/android/app/src/main/res/values/string.xml
-**/pubspec.lock
+
 **/google-services.json
 **/string.xml
