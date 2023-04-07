@@ -18,7 +18,7 @@ class EmailSign{
           email: email,
           password: password,
         );
-        Get.offAll(TranslatePage(name: userCredential.user?.email ?? "",));
+        Get.offAll(TranslatePage(name: userCredential.user?.email ?? "undefined",photo: userCredential.user?.photoURL??"https://yt3.ggpht.com/ytc/AKedOLS5ajMs0W8nbRxMvKohv2vA1K7bjjhMjvvryNV9dg=s900-c-k-c0x00ffffff-no-rj",));
         FireBaseController.addUserController();
         return userCredential;
       } on FirebaseAuthException catch (e) {
