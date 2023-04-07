@@ -22,12 +22,12 @@ class UITextStyles {
 
   static TextStyle loginButtonsStyle =  TextStyle(
       color: UIColorsHelper.signUpButtonsItemsColor,
-      fontSize: 17,);
+      fontSize: 15,);
 
   //translate page
   static TextStyle translatePageCompanentStyle =  TextStyle(
       color: UIColorsHelper.genelTextFontColor,
-      fontSize: 30,
+      fontSize: 25,
       );
 
   static TextStyle translatePageResponseTextStyle =  TextStyle(
@@ -37,7 +37,7 @@ class UITextStyles {
 
   static TextStyle translatePageButtonStyle =  TextStyle(
     color: UIColorsHelper.circleButtonItemColor,
-    fontSize: 20,
+    fontSize: 15,
   );
   //settings page
   static TextStyle settingsPageStyle =  TextStyle(
@@ -59,7 +59,7 @@ class UITextStyles {
   // genel widget
   static TextStyle pagesHeaderStyle =  TextStyle(
     color: UIColorsHelper.pagesTitleTextColor,
-    fontSize: 25,
+    fontSize: 20,
   );
 
 }

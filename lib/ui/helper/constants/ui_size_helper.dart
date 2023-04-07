@@ -30,13 +30,13 @@ class UISizeHelper{
   static const double translateButtonContainerCircular = 21;
   static const double translateButtonHeight = 0.12;
   static const double translateButtonWidth = 0.38;
-  static const double translateButtonPadding = 10;
+  static const double translateButtonPadding = 4;
 
   // sign login buttons sizes
   static const double loginButtonsContainerCircular = 40;
   static const double loginButtonsHeight = 0.12;
   static const double loginButtonsWidth = 0.88;
-  static const double loginButtonsPadding = 15;
+  static const double loginButtonsPadding = 8;
 
   // email sign page size
   static const double myFieldRadius=25;

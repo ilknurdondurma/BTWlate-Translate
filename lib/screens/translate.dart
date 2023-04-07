@@ -189,6 +189,7 @@ class _TranslatePageState extends State<TranslatePage> {
                     decoration: UIDecorationStyles.translateButtonContainerStyle,
                     padding: UISizeHelper.translateButtonPadding,
                     children: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(UITextHelper.translateButton,style: UITextStyles.translatePageButtonStyle,),

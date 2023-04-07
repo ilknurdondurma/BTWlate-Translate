@@ -58,15 +58,16 @@ class _LoginPageState extends State<LoginPage> {
                         dynamicHeight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
                         padding: UISizeHelper.loginButtonsPadding,
-                        children: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(Icons.g_mobiledata_outlined,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
-                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                            Text(UITextHelper.signInGoogle,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center,),
-                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                        children: Center(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(Icons.g_translate,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
+                              Text(UITextHelper.signInGoogle,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center,),
 
-                          ],
+                            ],
+                          ),
                         )
                     ),
                   ),
@@ -78,15 +79,20 @@ class _LoginPageState extends State<LoginPage> {
                         dynamicHeight: UISizeHelper.loginButtonsHeight,
                         decoration: UIDecorationStyles.loginPageButtonsStyles,
                         padding: UISizeHelper.loginButtonsPadding,
-                        children: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
-                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
-                            Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
-                            SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
+                        children: Center(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(Icons.facebook,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
+                              Padding(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Text(UITextHelper.signInFacebook,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
+                              ),
 
-                          ],
+                            ],
+                          ),
                         )
                     ),
                   ),
@@ -100,12 +106,11 @@ class _LoginPageState extends State<LoginPage> {
                         padding: UISizeHelper.loginButtonsPadding,
                         children: Center(
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(Icons.mail,size: UISizeHelper.inBoxIconsSize,color: UIColorsHelper.signUpButtonsItemsColor,),
-                              SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
                               Text(UITextHelper.signInEmail,style: UITextStyles.loginButtonsStyle,textAlign: TextAlign.center),
-                              SizedBox(width:UISpaceHelper.dynamicHeight(context, 0.1)),
 
                             ],
                           ),
@@ -113,10 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height:UISpaceHelper.dynamicHeight(context, 0.20)),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(UITextHelper.privacyPolicy,style: UITextStyles.loginPageTermsStyle,),
-                  ),
+                  Text(UITextHelper.privacyPolicy,style: UITextStyles.loginPageTermsStyle,),
 
                 ],
               ),
