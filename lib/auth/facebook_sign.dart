@@ -25,7 +25,7 @@ class FacebookSign {
         final User? user = userCredential.user;
 
         if (user != null) {
-          Get.offAll(TranslatePage(name: firebaseAuth.currentUser?.displayName,photo: firebaseAuth.currentUser?.photoURL,));
+          Get.offAll(TranslatePage(name: firebaseAuth.currentUser?.displayName ??"undefined",photo: firebaseAuth.currentUser?.photoURL ??"https://yt3.ggpht.com/ytc/AKedOLS5ajMs0W8nbRxMvKohv2vA1K7bjjhMjvvryNV9dg=s900-c-k-c0x00ffffff-no-rj",));
           FireBaseController.addUserController();
 
           return userCredential;

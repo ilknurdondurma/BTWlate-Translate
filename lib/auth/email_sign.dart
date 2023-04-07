@@ -18,21 +18,37 @@ class EmailSign{
           email: email,
           password: password,
         );
-        Get.offAll(TranslatePage(name: userCredential.user?.email ?? "",photo: userCredential.user?.photoURL,));
+        Get.offAll(TranslatePage(name: userCredential.user?.email ?? "",));
         FireBaseController.addUserController();
         return userCredential;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           print('The password provided is too weak.');
+          Fluttertoast.showToast(
+              msg: 'The password provided is too weak.',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.grey,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
         } else if (e.code == 'email-already-in-use') {
           print('The account already exists for that email.');
+          Fluttertoast.showToast(
+              msg: 'The account already exists for that email.',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor: Colors.grey,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
           try {
             await FirebaseAuth.instance.signInWithEmailAndPassword(
               email: email,
               password: password,
             ).then((value) => { const MySpinkit()});
             // başarılı giriş
-            Get.offAll(TranslatePage(name:FirebaseAuth.instance.currentUser?.email,photo: FirebaseAuth.instance.currentUser?.photoURL,));
+            Get.offAll(TranslatePage(name:FirebaseAuth.instance.currentUser?.email ??"undefined",photo: FirebaseAuth.instance.currentUser?.photoURL??"https://yt3.ggpht.com/ytc/AKedOLS5ajMs0W8nbRxMvKohv2vA1K7bjjhMjvvryNV9dg=s900-c-k-c0x00ffffff-no-rj",));
           } catch (error) {
             // hata durumunda kullanıcıya bildirim göster
 
